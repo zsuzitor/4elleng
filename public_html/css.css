@@ -1,0 +1,89 @@
+@charset "utf-8";
+/* CSS Document */
+
+body {
+    font: 0.8em Arial, Helvetica, sans-serif; 
+    background: #D7E1F2; 
+    
+   }
+   a { color: #9400D3;  }
+   #wrapper {
+    width: 100%; 
+    margin: 0 auto; 
+    background: #FFB6C1; 
+   }
+   #header { 
+    font-size: 2.2em; 
+    text-align: center; 
+    padding: 5px;
+    background: #696969; 
+   }
+   #nav {
+    float: left; 
+	width: 110px; 
+	padding: 0px;
+	
+   }
+   
+   #content {
+    background: #FFFAFA;
+    margin: 0 120px; 
+    padding: 10px;
+   }
+   #sprava {
+	     
+	width: 110px; 
+	padding: 0px;
+     float: right;
+	color: #000;
+	
+	
+   }
+   #DR {
+	   
+
+	 width: 110px; 
+
+     float: right;
+   }
+   
+   h2 { margin: 0 0 1em; }
+   #footer { 
+    clear: both; 
+    padding: 5px; 
+    background: #D71920; 
+   }
+#load {
+	display: none;
+	position: absolute;
+	right: 10px;
+	top: 10px;
+	background: url(images/ajax-loader.gif);
+	width: 43px;
+	height: 11px;
+	text-indent: -9999em;
+}
+
+.galv_header {
+    position: fixed; /* Фиксированное положение */
+    left: 0px;
+	right: 0px;
+	top: 0px;
+   }
+   .test1123 {
+   position: absolute;
+    top: 40px;
+   }
+
+
+
+.block_content {
+ border: 1px solid red; 
+ padding: 5px; /* Расстояние от текста до рамки */
+ transition: 3s;
+}
+
+.block_content:hover {
+background-color: #97CE68;
+color: #000;
+}

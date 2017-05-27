@@ -1,0 +1,65 @@
+<!DOCTYPE HTML>
+<html>
+ <head>
+  <meta>
+  <title>—обытие onclick</title>
+  <script type="text/javascript" src="js.js"></script>
+  <script>
+  function viewdiv1(){
+  viewdiv2();
+var el=document.getElementById("RG");
+if(el.style.display=="block"){
+el.style.display="none";
+} else {
+
+el.style.display="block";
+
+
+}
+}
+
+ function viewdiv2(){
+  viewdiv1();
+var el=document.getElementById("LG");
+if(el.style.display=="block"){
+el.style.display="none";
+} else {
+
+el.style.display="block";
+
+
+}
+}
+
+  </script>
+  <style type="text/css">
+   @import url(css.css);
+
+  </style>
+ </head> 
+ <body>
+ <a href="javascript:void(0);" onclick="viewdiv('LG')">логин</a>
+ <a href="javascript:void(0);" onclick="viewdiv('RG')">регистраци€</a>
+<div id="LG">
+
+   <p>логинитьс€</p>
+   <p>логин</p>
+   <p><input type="text" id="email1"> <span id="status"></span></p>
+   <p>пароль</p>
+   <p><input type="text" id="email1"> <span id="status"></span></p>
+   <p><input type="button" value="зарег"  onclick="log()"></p>
+   </div>
+
+   <div id="RG" style="display:none;">
+   <p>регистраци€</p>
+   <p>майл</p>
+   <p><input type="text" id="email"> <span id="status"></span></p>
+   <p>логин</p>
+   <p><input type="text" id="email1"> <span id="status"></span></p>
+   <p>пароль</p>
+   <p><input type="text" id="email1"> <span id="status"></span></p>
+   <p><input type="button" value="зарег"  onclick="reg1()"></p>
+   </div>
+   
+ </body>
+</html>

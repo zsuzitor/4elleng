@@ -1,0 +1,177 @@
+http://html-template.ru/razvlecheniya/item/552-sovremennyj-shablon-sajta-dlya-fanatov-igr
+https://habrahabr.ru/post/202408/
+
+
+var hash = window.location.hash.substr(1);
+var href = $('#nav li a').each(function(){
+    var href = $(this).attr('href');
+    if(hash==href.substr(0,href.length-5)){
+        var toLoad = hash+'.html #content';
+        $('#content').load(toLoad)
+    } 
+});
+
+	$(document).ready(function() {
+	
+    // Check for hash value in URL
+    var hash = window.location.hash.substr(1);
+    var href = $('#nav li a').each(function(){
+        var href = $(this).attr('href');
+        if(hash==href.substr(0,href.length-5)){
+            var toLoad = hash+'.html #content';
+            $('#content').load(toLoad)
+        } 
+    });
+    
+    $('#nav li a').click(function(){
+    
+    var toLoad = $(this).attr('href')+' #content';
+    $('#content').hide('fast',loadContent);
+    $('#load').remove();
+    $('#wrapper').append('<span id="load">LOADING...</span>');
+    $('#load').fadeIn('normal');
+    window.location.hash = $(this).attr('href').substr(0,$(this).attr('href').length-5);
+    function loadContent() {
+    	$('#content').load(toLoad,'',showNewContent())
+    }
+    function showNewContent() {
+    	$('#content').show('normal',hideLoader());
+    }
+    function hideLoader() {
+    	$('#load').fadeOut('normal');
+    }
+    return false;
+    
+    });
+});
+
+
+
+
+файлдиалог  https://www.html5rocks.com/ru/tutorials/file/dndfiles/
+
+
+
+
+var el=document.getElementById(id);
+if(el.style.display=="block"){
+el.style.display="none";
+} else {
+if(id==RG)
+  {
+  var el=document.getElementById(LG);
+  if(el<0)
+  {
+  
+if(el.style.display=="block"){
+el.style.display="none";
+}
+  }
+  }
+  else{
+  if(el<0)
+  {
+  var el=document.getElementById(RG);
+if(el.style.display=="block"){
+el.style.display="none";
+  }
+el.style.display="block";
+}
+}
+}
+
+
+
+
+function viewdiv(id){
+  
+var el=document.getElementById(id);
+if(el.style.display=="block"){
+el.style.display="none";
+} else {
+
+el.style.display="block";
+
+
+}
+}
+
+
+
+
+
+
+
+
+
+
+function getFromServer(id) {
+  if (id === undefined) return;
+  var xhr = new XMLHttpRequest();
+  xhr.open('GET', `/getsample?id=${id}`, true);
+  xhr.setRequestHeader("X-Requested-With", "XMLHttpRequest");
+  xhr.send();
+
+  xhr.onreadystatechange = function() {
+    if (xhr.readyState != 4) return;    
+    if (xhr.status != 200) {
+      alert(xhr.status + ': ' + xhr.statusText);
+    } else {
+      console.log(JSON.parse(xhr.responseText));
+      sampleOnLoad(JSON.parse(xhr.responseText));//функция выполнения какая то
+    }
+  }  
+}
+
+function sendToServer(body) {
+  var xhr = new XMLHttpRequest();
+  xhr.open('POST','/setsample',true);
+  xhr.setRequestHeader('content-type','application/json; charset=utf-8');
+  
+  xhr.send(body);
+  console.log("post");
+}
+
+
+
+
+
+   //$(".sprava_class").html(loadcontent('id@4@friends','friends'));
+   
+   
+   /*$(".sprava_class").html(function(){
+	   var xhr = new XMLHttpRequest();
+
+      xhr.open('GET', 'id@4@friends','friends', false);
+
+
+      xhr.send();
+
+if (xhr.status != 200) {
+  // обработать ошибку
+  alert( xhr.status + ': ' + xhr.statusText ); // пример вывода: 404: Not Found
+} else {
+  // вывести результат
+  return xhr.responseText;
+}
+ 
+   });*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
