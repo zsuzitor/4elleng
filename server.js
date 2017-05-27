@@ -14,15 +14,7 @@ var GlobalID=0;
 var global_index=-1;
 var global_flag_zahoda=true;
 
-//для тестов заполнение
-for(var i=0;i<50;++i)
-{
-	challenges.push(new challenge('testovoe_opisanie'+i,function(){
-	var photo1 = new Image ();
-	photo1.src = 'regexp.png';
-	}));
-	
-}
+
 
 //(login,mail,password1,id,place_in_top,exp,info,   friend,lenta_challenge,complete_challenge,not_complete_challenges_arr,not_complete_challenge,followed)
 //var glavnii_user_test=new User('ADMIN','ADMIN@mail.com',"12345");//,0,0,0,"admin",
@@ -372,14 +364,6 @@ User_prodv.prototype.redactirov_pr =function(arr) {
 		return res;
 	}
 
-
-	
-	
-	
-	
-	
-	
-	
 	
 	
 function User_Admin(login,mail,password1,id,place_in_top,exp,info,friend,lenta_challenge,complete_challenge,not_complete_challenges_arr,not_complete_challenge,followed) {
@@ -412,8 +396,57 @@ User_Admin.prototype.com_str =function(arr) {
 	
 	switch(hh[0])
 	{
-		case "-ban":
+		case "-ban1":
+		var tek;
+		for(var i=0;i<common_users.length;++i)
+		{
+			if(common_users[i].login==hh[1])
+			{
+				tek=common_users[i];
+				var a=new User_banned_lvl_1(tek.login,tek.mail,tek.password,tek.id,tek.rank,tek.place_in_top,tek.exp,tek.info,tek.friend,tek.lenta_challenge,tek.complete_challenge,tek.not_complete_challenges_arr,tek.not_complete_challenge,tek.followed)
+			
+		common_users[i]=a;
+		console.log("ban="+common_users[i].login+common_users[i].rank);
+		return "true";
+			}
+			
+		}
 		
+		break;
+		case "-ban2":
+		
+		var tek;
+		for(var i=0;i<common_users.length;++i)
+		{
+			if(common_users[i].login==hh[1])
+			{
+				tek=common_users[i];
+				var a=new User_banned_lvl_2(tek.login,tek.mail,tek.password,tek.id,tek.rank,tek.place_in_top,tek.exp,tek.info,tek.friend,tek.lenta_challenge,tek.complete_challenge,tek.not_complete_challenges_arr,tek.not_complete_challenge,tek.followed)
+			
+		common_users[i]=a;
+		console.log("ban="+common_users[i].login+common_users[i].rank);
+		return "true";
+			}
+			
+		}
+		
+		
+		break;
+		case "-ban3":
+		var tek;
+		for(var i=0;i<common_users.length;++i)
+		{
+			if(common_users[i].login==hh[1])
+			{
+				tek=common_users[i];
+				var a=new User_banned_lvl_3(tek.login,tek.mail,tek.password,tek.id,tek.rank,tek.place_in_top,tek.exp,tek.info,tek.friend,tek.lenta_challenge,tek.complete_challenge,tek.not_complete_challenges_arr,tek.not_complete_challenge,tek.followed)
+			
+		common_users[i]=a;
+		console.log("ban="+common_users[i].login+common_users[i].rank);
+		return "true";
+			}
+			
+		}
 		
 		break;
 		
@@ -445,12 +478,113 @@ User_Admin.prototype.com_str =function(arr) {
 	
 	
 	
+	function User_banned_lvl_3(login,mail,password1,id,bivsh_rank,place_in_top,exp,info,friend,lenta_challenge,complete_challenge,not_complete_challenges_arr,not_complete_challenge,followed) {	
+	//конструктор
+	this.id = id;
+	this.rank =3;//0=админ 1=продви2=обыч3=бан трет 4=бан вт 5=бан перв
+	this.bivsh_rank=bivsh_rank;
+    this.login = login;
+	this.mail = mail;
+	this.place_in_top = place_in_top;
+	this.exp = exp;
+	this.info=info;
+	this.password = password1;
+	
+	
+	//slice()
+	this.friend=friend.slice();
+	this.lenta_challenge=lenta_challenge.slice();
+	this.complete_challenge=complete_challenge.slice();
+	this.not_complete_challenges_arr=not_complete_challenges_arr.slice();
+	this.not_complete_challenge=not_complete_challenge;
+	this.followed=followed.slice();
+	
+}
+	User_banned_lvl_3.prototype = Object.create(User.prototype);
+User_banned_lvl_3.prototype.constructor = User_banned_lvl_3;
+
+	//запрет комментов
+	
+	
+	
+	
+	
+	function User_banned_lvl_2(login,mail,password1,id,bivsh_rank,place_in_top,exp,info,friend,lenta_challenge,complete_challenge,not_complete_challenges_arr,not_complete_challenge,followed) {	
+	//конструктор
+	this.id = id;
+	this.rank =4;//0=админ 1=продви2=обыч3=бан трет 4=бан вт 5=бан перв
+	this.bivsh_rank=bivsh_rank;
+    this.login = login;
+	this.mail = mail;
+	this.place_in_top = place_in_top;
+	this.exp = exp;
+	this.info=info;
+	this.password = password1;
+	
+	
+	//slice()
+	this.friend=friend.slice();
+	this.lenta_challenge=lenta_challenge.slice();
+	this.complete_challenge=complete_challenge.slice();
+	this.not_complete_challenges_arr=not_complete_challenges_arr.slice();
+	this.not_complete_challenge=not_complete_challenge;
+	this.followed=followed.slice();
+	
+	
+	
+}
+User_banned_lvl_2.prototype = Object.create(User_banned_lvl_3.prototype);
+User_banned_lvl_2.prototype.constructor = User_banned_lvl_2;
+
+
+User_banned_lvl_2.prototype.like = function(arr) {
+		
+		return "";
+	}
 	
 	
 	
 	
 	
 	
+	
+	
+	
+	
+function User_banned_lvl_1(login,mail,password1,id,bivsh_rank,place_in_top,exp,info,friend,lenta_challenge,complete_challenge,not_complete_challenges_arr,not_complete_challenge,followed) {	
+	//конструктор
+	this.id = id;
+	this.rank =5;//0=админ 1=продви2=обыч3=бан трет 4=бан вт 5=бан перв
+	this.bivsh_rank=bivsh_rank;
+    this.login = login;
+	this.mail = mail;
+	this.place_in_top = place_in_top;
+	this.exp = exp;
+	this.info=info;
+	this.password = password1;
+	
+	
+	//slice()
+	this.friend=friend.slice();
+	this.lenta_challenge=lenta_challenge.slice();
+	this.complete_challenge=complete_challenge.slice();
+	this.not_complete_challenges_arr=not_complete_challenges_arr.slice();
+	this.not_complete_challenge=not_complete_challenge;
+	this.followed=followed.slice();
+}
+
+User_banned_lvl_1.prototype = Object.create(User_banned_lvl_2.prototype);
+User_banned_lvl_1.prototype.constructor = User_banned_lvl_1;
+
+User_banned_lvl_1.prototype.add_ch = function(arr) {
+
+
+return "";
+}
+
+
+
+
 	
 	
 	function challenge(opisanie,image1) {
@@ -463,7 +597,15 @@ User_Admin.prototype.com_str =function(arr) {
 
 
 
-
+//для тестов заполнение
+for(var i=0;i<50;++i)
+{
+	challenges.push(new challenge('testovoe_opisanie'+i,function(){
+	var photo1 = new Image ();
+	photo1.src = 'regexp.png';
+	}));
+	
+}
 
 var hfhfh=[];
 var glavnii_user_test1=new User_Admin('ADMIN','ADMIN@mail.com',"12345",0,0,0,"admin",hfhfh,hfhfh,hfhfh,hfhfh,challenges[0],hfhfh);
@@ -640,28 +782,14 @@ console.log(req.url);
 				 if(req.url.indexOf("get@5@")!=-1&&global_flag_zahoda)
 				 {
 					 
-					 if(common_users[global_index].exp>=10)
+					 if(common_users[global_index].exp>=10&&common_users[global_index].rank==2)
 					 {
 						 var tek=common_users[global_index];
 						 //var a=new User_prodv(common_users[global_index].login,common_users[global_index].mail,common_users[global_index].password);
 						 //User_prodv(login,mail,password1,id,place_in_top,exp,info,friend,lenta_challenge,complete_challenge,not_complete_challenges_arr,not_complete_challenge,followed);
 						 
 						console.log("-------------");
-						/*console.log(a.login+a.mail+a.password);
-						a.friend=common_users[global_index].friend.slice();
-						a.lenta_challenge=common_users[global_index].lenta_challenge.slice();
-						a.complete_challenge=common_users[global_index].complete_challenge.slice();
-						a.not_complete_challenges_arr=common_users[global_index].not_complete_challenges_arr.slice();
 						
-						a.not_complete_challenge=common_users[global_index].not_complete_challenge;
-						a.followed=common_users[global_index].followed.slice();
-						
-						a.id=common_users[global_index].id;
-						a.place_in_top=common_users[global_index].place_in_top;
-						a.exp=common_users[global_index].exp;
-						a.info=common_users[global_index].info;
-						console.log("");
-						*/
 						var a=new User_prodv(tek.login,tek.mail,tek.password,tek.id,tek.place_in_top,tek.exp,tek.info,tek.friend,tek.lenta_challenge,tek.complete_challenge,tek.not_complete_challenges_arr,tek.not_complete_challenge,tek.followed)
 						console.log("-------------");
 						//return a;

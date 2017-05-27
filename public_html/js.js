@@ -20,8 +20,7 @@
    }
    
    
-   function likeconnect(obj)
-   {
+   function likeconnect(obj){
 	   //trmp_knopkalike+i
 	   var id=obj.id.substring(15,obj.id.length);
 	   
@@ -69,11 +68,16 @@
 				var t=document.getElementById("like_count"+id);
 				++t.value;
 			}
-			else{
+			if(xhr.responseText=="fa1lse")
+			{
 				//дизлайкнул уменьшить
 				var t=document.getElementById("like_count"+id);
 				--t.value;
 				
+			}
+			if(xhr.responseText=="")
+			{
+				alert("вы забанены или ошибка");
 			}
 			
 		}
@@ -88,8 +92,7 @@
 	   
    }
    
-   function del_zapis_ch_connect(obj)
-   {
+   function del_zapis_ch_connect(obj){
 	   //alert("1");
 	   //block_content"+i
 	   //trmp_knopkadel_zapis+i
@@ -140,8 +143,7 @@
 	   
    }
    
-   function otprservch1()
-   {
+   function otprservch1(){
 	   var obj="get@5@"+text_for_ch_ch.value;
 	   
 	   
@@ -177,6 +179,10 @@
 				
 				
 			}
+			if(xhr.responseText=="")
+			{
+				alert("вы забанены или ошибка");
+			}
 		}
 	  }
 	   
@@ -185,8 +191,7 @@
 	   
    }
    
-   function addphoto()
-   {
+   function addphoto(){
 	   
 	   
 	   
@@ -320,7 +325,7 @@ var obj="red_info@6@"+profil_info_str.value.substring(5,profil_info_str.value.le
 		if(tt[0]!='')
 			profil_info_str.value="ИНФО:"+tt[0];
 		else{
-			alert("нет 10 лвл или ошибка");
+			alert("нет 10 лвл или ошибка или бан");
 		}
           if(tt.length>1)
 		  {
