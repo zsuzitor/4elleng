@@ -873,6 +873,15 @@ console.log(req.url);
 			 //res.write();
 			 
 			break;
+			
+			case '/public_html/@vihod@':
+			
+			var txt=send_vihod();
+			global_flag_zahoda=false;
+			res.end(txt);
+			 //res.write();
+			 
+			break;
 
 			case '/public_html/@index@':
 			
@@ -925,6 +934,11 @@ console.log(req.url);
 	top_users.push(a);
 }
 
+function send_vihod(){
+	
+	
+	return "<h3>УВЕРЕН???</h3><p><img src=44d580b26c8f.gif width='300' height='300'></p><input type='button' id='go_ex' value='да'  onclick='exit()'><input type='button' id='not_ex' value='нет'  onclick='go_profil()'>";
+}
 function send_index()
 {
 	var res="<h2>Лента</h2><ol class='str11' id='str'>";

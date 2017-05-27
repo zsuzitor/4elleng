@@ -219,7 +219,10 @@ DR.insertBefore(newDiv, DR.children[0]);
 
 	
 	
-	
+	function go_profil() {
+		loadcontent('@profil@','content');
+			setLocation('profil.html');
+	}
 	
 	
 	
@@ -230,8 +233,7 @@ DR.insertBefore(newDiv, DR.children[0]);
 		{
 			
 			case 'gg1':
-			loadcontent('@profil@','content');
-			setLocation('profil.html');
+			go_profil();
 			
 			break;
 
@@ -252,7 +254,21 @@ DR.insertBefore(newDiv, DR.children[0]);
 			break;
 			
 			case 'gg4':
-			exit();
+			
+			//<h3>Друзья</h3><p><input type='button' value='добавить' id='addfriend'  onclick='vote(this)'></p><ol id='DR'>"
+			//var t=document.getElementById("content");
+			//$(".content").html("<h3>УВЕРЕН???</h3><p><img src=regexp.png width='150' height='200'></p><input type='button' id='ex' value='да'  onclick='exit()'><input type='button' id='not_ex' value='да'  onclick='loadcontent('@profil@','content')'>");
+			
+			
+			loadcontent('@vihod@','content');
+			//setLocation('vh.html');
+			
+			
+			//setLocation('top312.html');
+			//$(".content").html("<h3>УВЕРЕН???</h3>");
+			//alert("test344");
+			
+			//exit();
 			break;
 			
 			case 'addfriend':
