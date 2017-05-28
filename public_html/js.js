@@ -30,7 +30,15 @@
 		   otkyda="index";
 	   }
 	   else{
-		   otkyda="profil";
+		   if(location.href.indexOf("profil.html&")!=-1)
+		   {
+			   var t=location.href.substring(location.href.indexOf("profil.html&")+12,location.href.length);
+			   otkyda="profil_"+t;
+		   }
+		   else{
+			  otkyda="profil"; 
+		   }
+		   
 	   }
 	   
 	   
@@ -105,7 +113,12 @@
 	   else{
 		   otkyda="profil";
 	   }
-	   
+	   if(location.href.indexOf("profil.html&")!=-1)
+	   {
+		   otkyda="";
+	   }
+	   if(otkyda!="")
+	   {
 	   var obj1="del@5@"+otkyda+"@5@"+id;
 	   
 	   
@@ -140,7 +153,7 @@
 	   
 	   
 	   
-	   
+	   }
    }
    
    function otprservch1(){

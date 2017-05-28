@@ -142,6 +142,89 @@ User.prototype.like = function(arr) {
 		 
 		 
 	 }
+	 
+	 if(arr[1].indexOf("profil_")!=-1)
+	 {
+		 var t=arr[1].substring(arr[1].indexOf("profil_")+7,arr[1].length);//логин
+		 console.log(t);
+		 var index=0;
+		 var flag=0;
+		 //получить юзера у которого лайкнул
+		 /*for(;index<common_users.length;++index)
+		 {
+			 if(common_users[index].login==t)
+			 {
+				 console.log(common_users[index]);
+				 //нашли юзера у которого смотрим лайки
+				 //for(var i=0;i<common_users[index].complete_challenge.length;++i)
+					 for(var i=0;i<common_users[index].complete_challenge[arr[2]].liked.length;++i)
+			 {
+				 
+				 if(common_users[index].complete_challenge[arr[2]].liked[i]==this)
+				 {
+					  console.log(common_users[index]);
+					  
+					  common_users[index].complete_challenge[arr[2]].liked.splice(i, 1);
+					  ++flag;
+					  global_flag_zahoda=false;
+					 //res.end("fa1lse");
+					 return "fa1lse";
+					 break;
+				 }
+				 
+			 }
+				 
+			 }
+			 
+			 
+		 }*/
+		 
+		 
+		 for(;common_users[index].login!=t;++index);
+		 
+		 
+		 
+		 
+		 
+		 for(var i=0;i<common_users[index].complete_challenge[arr[2]].liked.length;++i)
+			 {
+				 
+				 if(common_users[index].complete_challenge[arr[2]].liked[i]==this)
+				 {
+					  //console.log(common_users[index]);
+					  
+					  common_users[index].complete_challenge[arr[2]].liked.splice(i, 1);
+					  ++flag;
+					  global_flag_zahoda=false;
+					 //res.end("fa1lse");
+					 return "fa1lse";
+					 break;
+				 }
+				 
+			 }
+		 
+		 
+		 
+		 
+		 
+		 
+		 //лайкнуть
+		 
+		 
+		 
+		 if(flag==0)
+			 {
+				 console.log(common_users[index].login);
+				 console.log(common_users[index]);
+			 common_users[index].complete_challenge[arr[2]].liked.push(this);
+			 }
+		 
+		 
+		 global_flag_zahoda=false;
+		 return "tr1ue";
+	 }
+	 
+	 
 		 
 		 global_flag_zahoda=false;
 		 return "error";
