@@ -35,16 +35,30 @@ el.style.display="block";
   var temp1=document.getElementById("email22");//логин
  var temp2=document.getElementById("email21");//майл
   var temp3=document.getElementById("email23");//пароль
-  
+  var flag_1=true;
  
   //if(/([a-z]|[A-Z]|\-){1,20}/.test(temp1)&&/(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*/.test(temp3)&&/[-\w.]+@([A-z0-9][-A-z0-9]+\.)+[A-z]{2,4}/.test(temp2))
  
-  if(temp1.value.indexOf('@')==-1&&temp3.value.indexOf('@')==-1)
+  if(temp1.value.indexOf('@')!=-1&&temp3.value.indexOf('@')!=-1)
   {
-send_server(temp1.value+"@2@"+temp2.value+"@2@"+temp3.value);
+flag_1=false;
 //alert(temp1.value+"@2@"+temp2.value+"@2@"+temp3.value);
   }
+  
+  if(temp2.value.indexOf('@')==-1)
+  {
+flag_1=false;
+
+  }
+  if(temp2.value.length<3||temp1.value.length<3||temp3.value.length<3)
+  {
+	 flag_1=false; 
+  }
  
+ if(flag_1==true)
+ {
+	 send_server(temp1.value+"@2@"+temp2.value+"@2@"+temp3.value);
+ }
  }
 
 	function log1(){
