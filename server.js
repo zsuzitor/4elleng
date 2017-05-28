@@ -1091,14 +1091,14 @@ function send_profil(login)
 			 }
 
 	var res="<h2>профиль</h2><div>";
-	
+	var t65="";
 	if(login==common_users[global_index].login)
 	{
 		res+="<h2><input type='button' id='red_pr_1' class='sub2' value='редактировать'  onclick='vote(this)'><input type='file' id='files_photo_pr'/></h2>";
-		
+		t65="<input  size='40' id='com_str_user' value='komandnaya stroka'>";
 	}
 	//<input size='40' id='"+profil_info_str+"' value='ИНФО:"+prof.info+" 'disabled>"type='text'
-	res+="<p>"+prof.login+"</p><p>ЭКСПА="+prof.exp+"</p><p>ID="+prof.id+"</p><p><input  size='40' id='profil_info_str' value='ИНФО:"+prof.info+" 'disabled><input  size='40' id='com_str_user' value='komandnaya stroka'></p><img src=regexp.png width='150' height='200'></div><div><ol class='str11' id='str'>";
+	res+="<p>"+prof.login+"</p><p>ЭКСПА="+prof.exp+"</p><p>ID="+prof.id+"</p><p><input  size='40' id='profil_info_str' value='ИНФО:"+prof.info+" 'disabled>"+t65+"</p><img src=regexp.png width='150' height='200'></div><div><ol class='str11' id='str'>";
 	for(var i=prof.complete_challenge.length-1;i>=0;i--)
 	{
 		res+="<li><div class='block_content' id='block_content"+i+"'><p>"+prof.complete_challenge[i].opisanie+"</p><img src='regexp.png' width='500' height='500'><input type='button' id='trmp_knopkalike"+i+"' value='лайк'  onclick='likeconnect(this)'><input size='40' id='like_count"+i+"' value='"+prof.complete_challenge[i].liked.length+"'disabled><input type='button' id='trmp_knopkadel_zapis"+i+"' value='удалить'  onclick='del_zapis_ch_connect(this)'></div></li>";

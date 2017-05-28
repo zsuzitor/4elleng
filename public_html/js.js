@@ -449,6 +449,11 @@ var obj="red_info@6@"+profil_info_str.value.substring(5,profil_info_str.value.le
 			  document.getElementById("files_photo_pr").style.visibility='hidden';
 			  document.getElementById("com_str_user").style.visibility='hidden';
 		  }
+		  if(obj.indexOf("@profil@/")!=-1)
+		  {
+			  document.getElementById("files_photo_pr").style.visibility='hidden';
+			  document.getElementById("com_str_user").style.visibility='hidden';
+		  }
         }
 
       }
