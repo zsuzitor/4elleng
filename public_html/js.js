@@ -279,7 +279,9 @@ DR.insertBefore(newDiv, DR.children[0]);
 			
 			
 			case 'follow_friend':
+			//
 			loadcontent("profil/"+ids.value,"content");
+			//setLocation("profil.html#"+ids.value);
 			break;
 			
 			
@@ -384,7 +386,7 @@ var obj="red_info@6@"+profil_info_str.value.substring(5,profil_info_str.value.le
 	
 	function loadcontent(obj,sposob) {
   
- 
+ //alert("send:"+obj);
   switch(sposob)
 		{
   
@@ -599,6 +601,11 @@ function send_one_friend(obj) {
    $(document).ready(function() {
 
 loadcontent('id@4@friends','friends');
+if(location.href.indexOf("top.html")!=-1)
+{
+	loadcontent('@top@','content');
+}
+else{
 if(location.href.indexOf("index.html")!=-1)
 {
 	loadcontent('@index@','content');
@@ -606,8 +613,22 @@ if(location.href.indexOf("index.html")!=-1)
 else{
 	if(location.href.indexOf("profil.html")!=-1)
 	{
+		//loadcontent('@profil@','content');
+		//alert(location.href);
+		if(location.href.indexOf("/profil.html#")!=-1)
+		{
+		var t=location.href.split("profil.html#");
+		//
+		//alert(t[0]);
+		//alert(t[1]);
+		loadcontent("@profil@#"+t[1],"content");
+		
+		}
+	else
+	{
 		loadcontent('@profil@','content');
 		
+	}
 		
 	}
 	else{
@@ -622,7 +643,7 @@ else{
 	
 	
 }
-
+   }
 
 
 

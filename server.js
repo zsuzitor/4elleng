@@ -913,9 +913,9 @@ console.log(req.url);
 		 {
 			
 			 console.log("отправка чужого профиля");
-			 console.log(req.url.substring(req.url.indexOf("/profil/")+8,req.url.length));
+			 console.log(req.url.substring(req.url.indexOf("/profil")+8,req.url.length));
 			 global_flag_zahoda=false;
-			 res.end(send_profil(req.url.substring(req.url.indexOf("/profil/")+8,req.url.length)));
+			 res.end(send_profil(req.url.substring(req.url.indexOf("/profil")+8,req.url.length)));
 			 
 		 } 
 		 }
