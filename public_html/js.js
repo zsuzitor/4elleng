@@ -280,8 +280,9 @@ DR.insertBefore(newDiv, DR.children[0]);
 			
 			case 'follow_friend':
 			//
-			loadcontent("profil/"+ids.value,"content");
-			//setLocation("profil.html#"+ids.value);
+			//loadcontent("@profil@/"+ids.value,"content");
+			loadcontent("@profil@/"+ids.value,"content");
+			setLocation("profil.html&"+ids.value);
 			break;
 			
 			
@@ -445,10 +446,6 @@ var obj="red_info@6@"+profil_info_str.value.substring(5,profil_info_str.value.le
 			 case 'friends':
 			 
 			 
-			 
-			 
-			 
-			 
 			 var xhr = new XMLHttpRequest();
 
       xhr.open('GET', obj, true);
@@ -480,16 +477,6 @@ var obj="red_info@6@"+profil_info_str.value.substring(5,profil_info_str.value.le
         }
 
       }
-			 
-			 
-			 
-			 
-			 
-			 
-			 
-			 
-			 
-			 
 			 
 			 
 			 
@@ -615,13 +602,13 @@ else{
 	{
 		//loadcontent('@profil@','content');
 		//alert(location.href);
-		if(location.href.indexOf("/profil.html#")!=-1)
+		if(location.href.indexOf("/profil.html&")!=-1)
 		{
-		var t=location.href.split("profil.html#");
+		var t=location.href.split("profil.html&");
 		//
 		//alert(t[0]);
 		//alert(t[1]);
-		loadcontent("@profil@#"+t[1],"content");
+		loadcontent("@profil@/"+t[1],"content");
 		
 		}
 	else

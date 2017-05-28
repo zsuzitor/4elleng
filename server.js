@@ -656,8 +656,21 @@ console.log(req.url);
 				 file.serve("/public_html/1024413.jpg", res);
 	console.log("_serve_");
 			 }
+			 if(req.url.indexOf('&')==-1)
+			 {
     file.serve(req, res);
 	console.log("_serve_");
+			 }
+			 else{
+				 console.log("_-_");
+				 console.log(req.url);
+				 var t=req.url.substring(0,req.url.indexOf('&'));
+				 file.serve("/public_html/profil.html", res);
+	console.log(t);
+	console.log("/public_html/profil.html");
+	 console.log("_-_");
+				 
+			 }
 	 }
 	 else{
 		 global_flag_zahoda=true;
@@ -909,13 +922,13 @@ console.log(req.url);
 			break;
 			
 		}
-		if(req.url.indexOf("/profil/")!=-1&&global_flag_zahoda)
+		if(req.url.indexOf("/@profil@/")!=-1&&global_flag_zahoda)
 		 {
 			
 			 console.log("отправка чужого профиля");
-			 console.log(req.url.substring(req.url.indexOf("/profil")+8,req.url.length));
+			 console.log(req.url.substring(req.url.indexOf("/@profil@/")+10,req.url.length));
 			 global_flag_zahoda=false;
-			 res.end(send_profil(req.url.substring(req.url.indexOf("/profil")+8,req.url.length)));
+			 res.end(send_profil(req.url.substring(req.url.indexOf("/@profil@/")+10,req.url.length)));
 			 
 		 } 
 		 }

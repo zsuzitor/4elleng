@@ -250,3 +250,8 @@ p{
   color: black;
   transform: translateY(-7px);
 }
+
+#DR {
+width: 110px; 
+float: right;
+}
