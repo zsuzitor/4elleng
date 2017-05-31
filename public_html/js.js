@@ -220,7 +220,7 @@
 	   var newDiv = document.createElement("div");
 	   newDiv.id="temp_id_add_fr";
 	   newDiv.class="block_content";
-        newDiv.innerHTML = "<p class='parent'><input type='text' id='temp_add_fr'></p><p class='parent'><input type='button' id='trmp_knopkaadd' value='Добавить'  onclick='Add1()'></p>";
+        newDiv.innerHTML = "<p class='parent'><input type='text' id='temp_add_fr' size='12'></p><p class='parent'><input type='button' id='trmp_knopkaadd' value='Добавить'  onclick='Add1()'></p>";
 
     // добавляем только что созданый элемент в дерево DOM
 DR.insertBefore(newDiv, DR.children[0]);
@@ -250,6 +250,10 @@ DR.insertBefore(newDiv, DR.children[0]);
 			
 			break;
 
+			case 'gg_profil_sverhu_knopka':
+			go_profil();
+			
+			break;
 			case 'gg2':
 			loadcontent('@index@','content');
 			setLocation('index.html');

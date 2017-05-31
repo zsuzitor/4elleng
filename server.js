@@ -865,7 +865,7 @@ console.log(req.url);
 			   
 			    for(var i=0;i<common_users[global_index].friend.length;++i)
 			 {//<input type='button' value='glavnii_user_test.friend[i].login' id='follow_friend'  onclick='vote(this)'>
-				 res1+="<li><div id='block_friend_log"+common_users[global_index].friend[i].login+"' class='block_content'><img src='regexp.png' width='30' height='30'><p><input type='button' value='"+common_users[global_index].friend[i].login+"' id='follow_friend'  onclick='vote(this)'></p></p><p><input type='button' id='trmp_knopkadel"+common_users[global_index].friend[i].login+"' value='удалить"+common_users[global_index].friend[i].login+"'  onclick='dell(this)'></p></div></li>";
+				 res1+="<li><div id='block_friend_log"+common_users[global_index].friend[i].login+"' class='block_content'><img src='regexp.png' width='50' height='50'><p><input type='button' style='width:100x;height:25px' value='"+common_users[global_index].friend[i].login+"' id='follow_friend'  onclick='vote(this)'></p></p><p><input type='button' style='width:50x;height:25px' id='trmp_knopkadel"+common_users[global_index].friend[i].login+"' value='удалить"+common_users[global_index].friend[i].login+"'  onclick='dell(this)'></p></div></li>";
 			 }
 			 res1+="</ol></div>";
 			 console.log("test_frs3");
@@ -1114,7 +1114,7 @@ function send_profil(login)
 		//t65="<input  size='40' id='com_str_user' value='komandnaya stroka'>";
 	//}
 	
-	res+="</div>";//</div>
+	res+="</div><div class='layer3'></div>";//</div>
 	
 	//res+="<p>ЭКСПА="+prof.exp+"</p><p><input  size='40' id='profil_info_str' value='ИНФО:"+prof.info+" 'disabled>"+t65+"</p></div><div><ol class='str11' id='str'>";
 	//res+="<p>"+prof.login+"</p><p>ID="+prof.id+"</p><img src=regexp.png width='150' height='200'>";
