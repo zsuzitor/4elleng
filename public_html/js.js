@@ -68,7 +68,7 @@
           //alert(xhr.status + ': ' + xhr.statusText);
         } else {
 			
-			alert(xhr.responseText);
+			//alert(xhr.responseText);
 			if(xhr.responseText=="tr1ue")
 			{
 				//лайкнул увеличить
@@ -327,6 +327,7 @@ DR.insertBefore(newDiv, DR.children[0]);
 			//отправлять
 			document.getElementById("files_photo_pr").style.visibility='hidden';
 			profil_info_str.disabled=true;
+			if(document.getElementById("com_str_user")!=null)
 			document.getElementById("com_str_user").style.visibility='hidden';
 			//com_str_user.disabled=true;
 				
@@ -334,7 +335,10 @@ DR.insertBefore(newDiv, DR.children[0]);
 				{
 				
 				var xhr = new XMLHttpRequest();
+				if(document.getElementById("com_str_user")!=null)
 var obj="red_info@6@"+profil_info_str.value.substring(5,profil_info_str.value.length)+"@6@"+com_str_user.value;
+else
+	var obj="red_info@6@"+profil_info_str.value.substring(5,profil_info_str.value.length)+"@6@";
       xhr.open('GET', obj, true);
 
 
@@ -352,7 +356,7 @@ var obj="red_info@6@"+profil_info_str.value.substring(5,profil_info_str.value.le
         if (xhr.status != 200) {
           
         } else {
-			alert(xhr.responseText);
+			//alert(xhr.responseText);
 			var tt=xhr.responseText.split("@6@");
 		if(tt[0]!='')
 			profil_info_str.value="ИНФО:"+tt[0];
@@ -361,6 +365,7 @@ var obj="red_info@6@"+profil_info_str.value.substring(5,profil_info_str.value.le
 		}
           if(tt.length>1)
 		  {
+			  if(document.getElementById("com_str_user")!=null)
 			  com_str_user.value+=tt[1];
 			  
 		  }
@@ -380,6 +385,7 @@ var obj="red_info@6@"+profil_info_str.value.substring(5,profil_info_str.value.le
 			profil_info_str.value=profil_info_str.value.substring(5,profil_info_str.value.length);
 			document.getElementById("files_photo_pr").style.visibility='visible';
 			profil_info_str.disabled=false;
+			if(document.getElementById("com_str_user")!=null)
 			document.getElementById("com_str_user").style.visibility='visible';
 			//com_str_user.disabled=false;
 			//$(".content1").html("new html");
@@ -447,11 +453,14 @@ var obj="red_info@6@"+profil_info_str.value.substring(5,profil_info_str.value.le
 		  if(obj=="@profil@")
 		  {
 			  document.getElementById("files_photo_pr").style.visibility='hidden';
+			  if(document.getElementById("com_str_user")!=null)
 			  document.getElementById("com_str_user").style.visibility='hidden';
 		  }
 		  if(obj.indexOf("@profil@/")!=-1)
 		  {
+			  if(document.getElementById("files_photo_pr")!=null)
 			  document.getElementById("files_photo_pr").style.visibility='hidden';
+			  if(document.getElementById("com_str_user")!=null)
 			  document.getElementById("com_str_user").style.visibility='hidden';
 		  }
         }
@@ -527,7 +536,7 @@ var obj="red_info@6@"+profil_info_str.value.substring(5,profil_info_str.value.le
           // обработать ошибку
           //alert(xhr.status + ': ' + xhr.statusText);
         } else {
-			alert(xhr.responseText);
+			//alert(xhr.responseText);
 			if(xhr.responseText.indexOf("tr1ue")!=-1)
 			{
 				//удалить див
@@ -566,7 +575,7 @@ function send_one_friend(obj) {
           // обработать ошибку
           //alert(xhr.status + ': ' + xhr.statusText);
         } else {
-			alert(xhr.responseText);
+			//alert(xhr.responseText);
 			if(xhr.responseText.indexOf("tr1ue")!=-1)
 			{
 				//добавление успешно учетка есть

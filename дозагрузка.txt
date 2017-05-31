@@ -1,5 +1,30 @@
 123321
 
+
+профиль на дивы    
+
+
+
+
+
+.layer2 {
+    background-color: #c0c0c0; /* Цвет фона слоя */
+    padding: 5px; /* Поля вокруг текста */
+    width: 400px; /* Ширина слоя */
+    float: left; /* Обтекание по правому краю */
+   }
+   
+   .to_4to_nige_pro_ch {
+    
+    
+    float: left; /* Обтекание по правому краю */
+   }
+
+
+
+
+
+
 http://html-template.ru/razvlecheniya/item/552-sovremennyj-shablon-sajta-dlya-fanatov-igr
 https://habrahabr.ru/post/202408/
 

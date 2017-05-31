@@ -255,3 +255,19 @@ p{
 width: 110px; 
 float: right;
 }
+
+
+
+.layer1 {
+    
+    float: left; /* Обтекание по правому краю */
+    width: 400px; /* Ширина слоя */
+	height: 500px;
+   }
+   
+   .layer2 {
+    
+   
+	height: 500px;
+   }
+

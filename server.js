@@ -758,6 +758,12 @@ console.log(req.url);
 	 else{
 		 global_flag_zahoda=true;
 		 
+		 if(req.url=="/public_html/[object%20File]"&&global_flag_zahoda)
+		 {
+			 console.log(req.name);
+			 global_flag_zahoda=false;
+		 }
+		
 		 if(req.url.indexOf("@1@")!=-1&&global_flag_zahoda)
 		 {
 			 
@@ -1033,7 +1039,7 @@ console.log(req.url);
 function send_vihod(){
 	
 	
-	return "<h3>УВЕРЕН???</h3><p><img src=44d580b26c8f.gif width='300' height='300'></p><input type='button' id='go_ex' value='да'  onclick='exit()'><input type='button' id='not_ex' value='нет'  onclick='go_profil()'>";
+	return "<h3 id='id_for_header_exit_gaba'>УВЕРЕН???</h3><p><img src=44d580b26c8f.gif width='300' height='300' id='id_for_image_exit_gaba'></p><input type='button' id='go_ex' value='да'  onclick='exit()'><input type='button' id='not_ex' value='нет'  onclick='go_profil()'>";
 }
 function send_index()
 {
@@ -1051,7 +1057,7 @@ function send_index()
 
 function send_chelleng()
 {
-	var res="<h2>текущий челенж</h2><p id='opisanie_chellenga_1'>"+common_users[global_index].not_complete_challenge.opisanie+"</p> <img id='list321_img' src = 'regexp.png'/><p><input type='text' id='text_for_ch_ch'><input type='file' id='files' name='files[]' multiple /></p><p><input type='button' value='отправить' id='addch1'  onclick='otprservch1()'></p>";
+	var res="<h2>текущий челенж</h2><p id='opisanie_chellenga_1'>"+common_users[global_index].not_complete_challenge.opisanie+"</p> <img id='list321_img' src = 'regexp.png'/><p><input type='text' id='text_for_ch_ch'><input type='file' id='files' name='files[]'  /></p><p><input type='button' value='отправить' id='addch1'  onclick='otprservch1()'></p>";
    return res;
 }
 
@@ -1068,11 +1074,9 @@ function send_top()
 	
 	for(var i=top_users.length-1;i>=0;i--)
 	{
-		//<input type='button' id='trmp_knopkalike"+i+"' value='"+top_users[i].login+"'  onclick='likeconnect(this)'>
-		//id='follow_friend'  onclick='vote(this)
+		
 		res+="<li><div class='block_content' id='block_content"+i+"'><p><input type='button' id='follow_friend' value='"+top_users[i].login+"'  onclick='vote(this)'></p><p>ЭКСПА="+top_users[i].exp+"</p><img src='regexp.png' width='500' height='500'></div></li>";
-		  //res+='<li><div class="block_content" id="block_content'+i+'"><p>'+glavnii_user_test.lenta_challenge[i].opisanie+'</p><img src="regexp.png" width="500" height="500"><input type="button" id="trmp_knopkalike'+i+'" value="лайк"  onclick="likeconnect(this)"><input size="40" id="like_count'+i+'" value="'+glavnii_user_test.lenta_challenge[i].liked.length+'"disabled><input type="button" id="trmp_knopkadel_zapis'+i+'" value="удалить"  onclick="del_zapis_ch_connect(this,"profil")"></div></li>';
-	
+		 
 	}
 	res+="</ol>";
 	 return res;
@@ -1090,21 +1094,43 @@ function send_profil(login)
 				 }
 			 }
 
-	var res="<h2>профиль</h2><div>";
+	var res="<h2>профиль</h2>";//<div>
 	var t65="";
 	if(login==common_users[global_index].login)
 	{
-		res+="<h2><input type='button' id='red_pr_1' class='sub2' value='редактировать'  onclick='vote(this)'><input type='file' id='files_photo_pr'/></h2>";
+		res+="<h2><input type='button' id='red_pr_1' class='sub2' value='редактировать'  onclick='vote(this)'></h2>";
+		if(common_users[global_index].rank==0)
 		t65="<input  size='40' id='com_str_user' value='komandnaya stroka'>";
 	}
-	//<input size='40' id='"+profil_info_str+"' value='ИНФО:"+prof.info+" 'disabled>"type='text'
-	res+="<p>"+prof.login+"</p><p>ЭКСПА="+prof.exp+"</p><p>ID="+prof.id+"</p><p><input  size='40' id='profil_info_str' value='ИНФО:"+prof.info+" 'disabled>"+t65+"</p><img src=regexp.png width='150' height='200'></div><div><ol class='str11' id='str'>";
+	
+	
+	//res+="";
+	//res+="<p>"+prof.login+"</p><p>ЭКСПА="+prof.exp+"</p><p>ID="+prof.id+"</p><p><input  size='40' id='profil_info_str' value='ИНФО:"+prof.info+" 'disabled>"+t65+"</p><img src=regexp.png width='150' height='200'></div><div><ol class='str11' id='str'>";
+	
+	res+="<div class='layer1'><img src=regexp.png width='300' height='450'><input type='file' id='files_photo_pr'/></div><div class='layer2'><p>"+prof.login+"</p><p>ЭКСПА="+prof.exp+"</p><p>ID="+prof.id+"</p><p><input  size='40' id='profil_info_str' value='ИНФО:"+prof.info+" 'disabled></p><p>"+t65+"</p>";
+	
+	//if(common_users[global_index].rank==0&&(login==common_users[global_index].login))
+	//{
+		//t65="<input  size='40' id='com_str_user' value='komandnaya stroka'>";
+	//}
+	
+	res+="</div>";//</div>
+	
+	//res+="<p>ЭКСПА="+prof.exp+"</p><p><input  size='40' id='profil_info_str' value='ИНФО:"+prof.info+" 'disabled>"+t65+"</p></div><div><ol class='str11' id='str'>";
+	//res+="<p>"+prof.login+"</p><p>ID="+prof.id+"</p><img src=regexp.png width='150' height='200'>";
 	for(var i=prof.complete_challenge.length-1;i>=0;i--)
 	{
-		res+="<li><div class='block_content' id='block_content"+i+"'><p>"+prof.complete_challenge[i].opisanie+"</p><img src='regexp.png' width='500' height='500'><input type='button' id='trmp_knopkalike"+i+"' value='лайк'  onclick='likeconnect(this)'><input size='40' id='like_count"+i+"' value='"+prof.complete_challenge[i].liked.length+"'disabled><input type='button' id='trmp_knopkadel_zapis"+i+"' value='удалить'  onclick='del_zapis_ch_connect(this)'></div></li>";
+		//res+="<div><li><div class='block_content' id='block_content"+i+"'><p>"+prof.complete_challenge[i].opisanie+"</p><img src='regexp.png' width='500' height='500'><input type='button' id='trmp_knopkalike"+i+"' value='лайк'  onclick='likeconnect(this)'><input size='40' id='like_count"+i+"' value='"+prof.complete_challenge[i].liked.length+"'disabled>";
+		res+="<div class='to_4to_nige_pro_ch'><li><div class='block_content' id='block_content"+i+"'><p>"+prof.complete_challenge[i].opisanie+"</p><img src='regexp.png' width='500' height='500'><input type='button' id='trmp_knopkalike"+i+"' value='лайк'  onclick='likeconnect(this)'><input size='40' id='like_count"+i+"' value='"+prof.complete_challenge[i].liked.length+"'disabled>";
+		
+		
+		if(login==common_users[global_index].login)
+	res+="<input type='button' id='trmp_knopkadel_zapis"+i+"' value='удалить'  onclick='del_zapis_ch_connect(this)'>";
+		
+		res+="</div></li>";
 		
 	}
-	res+="</ol></div>";
+	res+="</ol></div>";//
 	return res;
 	
 	//var res="<h2>testtest</h2><p>1test1</p>";
