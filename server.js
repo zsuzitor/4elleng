@@ -866,7 +866,10 @@ console.log(req.url);
 			   
 			    for(var i=0;i<common_users[global_index].friend.length;++i)
 			 {//<input type='button' value='glavnii_user_test.friend[i].login' id='follow_friend'  onclick='vote(this)'>
-				 res1+="<li><div id='block_friend_log"+common_users[global_index].friend[i].login+"' class='block_content'><img src='regexp.png' width='50' height='50'><p><input type='button' style='width:100x;height:25px' value='"+common_users[global_index].friend[i].login+"' id='follow_friend_sprava'  onclick='vote(this)'></p></p><p><input type='button' style='width:50x;height:25px'  id='trmp_knopkadel"+common_users[global_index].friend[i].login+"' class='ydalit_sprava_dr_1' value='удалить'  onclick='dell(this)'></p></div></li>";
+				 //res1+="<li><div id='block_friend_log"+common_users[global_index].friend[i].login+"' class='block_content'><img src='regexp.png' width='50' height='50'><p><input type='button' style='width:100x;height:40px' value='"+common_users[global_index].friend[i].login+"' id='follow_friend_sprava'  onclick='vote(this)'></p><p><input type='button' style='width:50x;height:40px'  id='trmp_knopkadel"+common_users[global_index].friend[i].login+"' class='ydalit_sprava_dr_1' value='удалить'  onclick='dell(this)'></p></div></li>";
+			 
+			 res1+="<li><div id='block_friend_log"+common_users[global_index].friend[i].login+"' class='block_content'><img src='regexp.png' width='50' height='50'><p><input type='button' style='width:100x;height:40px' value='"+common_users[global_index].friend[i].login+"' id='follow_friend_sprava'  onclick='vote(this)'></p><p><input type='button' style='width:50x;height:40px'  id='trmp_knopkadel"+common_users[global_index].friend[i].login+"' class='ydalit_sprava_dr_1' value='удалить'  onclick='dell(this)'></p></div></li>";
+			 
 			 }
 			 res1+="</ol></div>";
 			 console.log("test_frs3");
@@ -1122,7 +1125,7 @@ function send_profil(login)
 	for(var i=prof.complete_challenge.length-1;i>=0;i--)
 	{
 		//res+="<div><li><div class='block_content' id='block_content"+i+"'><p>"+prof.complete_challenge[i].opisanie+"</p><img src='regexp.png' width='500' height='500'><input type='button' id='trmp_knopkalike"+i+"' value='лайк'  onclick='likeconnect(this)'><input size='40' id='like_count"+i+"' value='"+prof.complete_challenge[i].liked.length+"'disabled>";
-		res+="<div class='to_4to_nige_pro_ch'><li><div class='block_content' id='block_content"+i+"'><p>"+prof.complete_challenge[i].opisanie+"</p><img src='regexp.png' width='500' height='500'><input type='button' id='trmp_knopkalike"+i+"' value='лайк' class='like_del_knopka'  onclick='likeconnect(this)'><input type='text' size='10' id='like_count"+i+"' value='"+prof.complete_challenge[i].liked.length+"'disabled>";
+		res+="<div class='to_4to_nige_pro_ch'><ol class ='str11' id='str'><li><div class='block_content' id='block_content"+i+"'><p>"+prof.complete_challenge[i].opisanie+"</p><img src='regexp.png' width='500' height='500'><input type='button' id='trmp_knopkalike"+i+"' value='лайк' class='like_del_knopka'  onclick='likeconnect(this)'><input type='text' size='10' id='like_count"+i+"' value='"+prof.complete_challenge[i].liked.length+"'disabled>";
 		
 		
 		if(login==common_users[global_index].login)

@@ -46,6 +46,7 @@ a
 }
 
 
+
 #content
 {
   background: #F0F8FF;;
@@ -255,8 +256,16 @@ p
 #DR {
 width: 110px; 
 float: right;
-}
+list-style-type: none;
+	
 
+}
+#str {
+
+list-style-type: none;
+	
+
+}
 
 .layer1 {
     
@@ -459,6 +468,7 @@ float: right;
 
 
 .ydalit_sprava_dr_1{
+	
   text-decoration: none;
   outline: none;
   display: inline-block;
@@ -468,7 +478,7 @@ float: right;
   line-height: 45px;
   border-radius: 15px;
   font-family: 'Bad Script', cursive;
-  font-size: 15px;
+  font-size: 10px;
   text-transform: uppercase;
   text-align: center;
   letter-spacing: 3px;
@@ -489,13 +499,13 @@ float: right;
   text-decoration: none;
   outline: none;
   display: inline-block;
-  width: 170px;
+  width: 93px;
   margin-left: 10px;
   height: 50px;
   line-height: 45px;
   border-radius: 15px;
   font-family: 'Bad Script', cursive;
-  font-size: 15px;
+  font-size: 10px;
   text-transform: uppercase;
   text-align: center;
   letter-spacing: 3px;
