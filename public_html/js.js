@@ -10,10 +10,10 @@
 	
 	
    }
+   
    function dell(obj) {
- 
-	
-	dell_send_one_friend("delete"+"@3@"+obj.value.substring(7, obj.value.length));
+
+	dell_send_one_friend("delete"+"@3@"+obj.id.substring(14, obj.id.length));
 	
 	
 	

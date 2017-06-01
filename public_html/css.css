@@ -32,6 +32,7 @@ a
 
 #nav, #sprava 
 {
+	
   top: 60;
   float: left; 
 	width: 110px; 
@@ -41,7 +42,9 @@ a
   transition: 0.2s;
   font-size: 15px;
   background-color: #E6E6FA; 
+  
 }
+
 
 #content
 {
@@ -115,7 +118,7 @@ h2
 
 .block_content:hover 
 {
-  background-color: #97CE68;
+  background-color: #FFC0CB;
   color: #000;
 }
 
@@ -405,3 +408,112 @@ float: right;
     background-image: -moz-linear-gradient(top, #f6f6f6, #ececec);
     background-image: -moz-gradient(top, #f6f6f6, #ececec);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.like_del_knopka{
+  text-decoration: none;
+  outline: none;
+  display: inline-block;
+  width: 170px;
+  margin-left: 10px;
+  height: 50px;
+  line-height: 45px;
+  border-radius: 15px;
+  font-family: 'Bad Script', cursive;
+  font-size: 15px;
+  text-transform: uppercase;
+  text-align: center;
+  letter-spacing: 3px;
+  font-weight: 600;
+  color: #524f4e;
+  background: #FFC0CB;
+  box-shadow: 0 8px 15px rgba(0,0,0,.1);
+  transition: .3s;
+}
+.like_del_knopka:hover {
+  background: white;
+  box-shadow: 0 15px 20px rgba(122,122,122,0.5);
+  color: black;
+  transform: translateY(-7px);
+}
+
+
+.ydalit_sprava_dr_1{
+  text-decoration: none;
+  outline: none;
+  display: inline-block;
+  width: 93px;
+  margin-left: 10px;
+  height: 50px;
+  line-height: 45px;
+  border-radius: 15px;
+  font-family: 'Bad Script', cursive;
+  font-size: 15px;
+  text-transform: uppercase;
+  text-align: center;
+  letter-spacing: 3px;
+  font-weight: 600;
+  color: #524f4e;
+  background: #FFC0CB;
+  box-shadow: 0 8px 15px rgba(0,0,0,.1);
+  transition: .3s;
+}
+.ydalit_sprava_dr_1:hover {
+  background: white;
+  box-shadow: 0 15px 20px rgba(122,122,122,0.5);
+  color: black;
+  transform: translateY(-7px);
+}
+
+#follow_friend_sprava{
+  text-decoration: none;
+  outline: none;
+  display: inline-block;
+  width: 170px;
+  margin-left: 10px;
+  height: 50px;
+  line-height: 45px;
+  border-radius: 15px;
+  font-family: 'Bad Script', cursive;
+  font-size: 15px;
+  text-transform: uppercase;
+  text-align: center;
+  letter-spacing: 3px;
+  font-weight: 600;
+  color: #524f4e;
+  background: #FFC0CB;
+  box-shadow: 0 8px 15px rgba(0,0,0,.1);
+  transition: .3s;
+}
+#follow_friend_sprava:hover {
+  background: white;
+  box-shadow: 0 15px 20px rgba(122,122,122,0.5);
+  color: black;
+  transform: translateY(-7px);
+}
+
+
+
+
+
+
