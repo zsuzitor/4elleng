@@ -1,0 +1,40 @@
+
+	
+	
+this.login = login;
+this.id = ++GlobalID;
+this.rank =2;//0=админ 1=продви2=обыч3=бан трет 4=бан вт 5=бан перв
+this.mail = mail;
+this.place_in_top = top_users.length;
+this.exp = 0;
+
+this.photo="regexp.png";
+this.info="pusto"
+this.password = password1;
+
+
+this.not_complete_challenge
+	
+	
+	
+	
+	
+	
+	
+	this.friend=[];
+	this.lenta_challenge=[];
+	this.complete_challenge=[];
+	this.not_complete_challenges_arr=[];
+	
+	this.followed=[];
+
+
+
+
+
+function challenge(opisanie,image1,image12) {
+	this.opisanie = opisanie;
+    this.now = new Date();
+	this.liked=[];
+	this.photo=image12;
+}

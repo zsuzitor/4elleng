@@ -1,5 +1,6 @@
 var http = require('http');
 var url = require('url');
+var fs = require('fs');
 var querystring = require('querystring');
 var static = require('node-static');
 var file = new static.Server('.', {
@@ -671,11 +672,11 @@ return "";
 
 	
 	
-function challenge(opisanie,image1,image1) {
+function challenge(opisanie,image1,image12) {
 	this.opisanie = opisanie;
     this.now = new Date();
 	this.liked=[];
-	this.photo=image1;
+	this.photo=image12;
 }
 
 
@@ -762,7 +763,7 @@ console.log(req.url);
 	 }
 	 else{
 		 global_flag_zahoda=true;
-		 
+		
 		 if(req.url=="/public_html/[object%20File]"&&global_flag_zahoda)
 		 {
 			 console.log(req.name);
@@ -800,6 +801,8 @@ console.log(req.url);
 				 
 				 
 			 }
+			 p_4tenie_polzovatelya_bd(arr[0]);
+			 
 			 global_flag_zahoda=false;
 			 console.log("fa1lse");
 				 res.end("fa1lse");
@@ -839,7 +842,7 @@ console.log(req.url);
 		 
 		 if(global_index!=-1&&global_flag_zahoda)
 			 {
-		 
+		  sohran_polzovatelya_bd(common_users[global_index].login);
 		 if(req.url.indexOf("@3@")!=-1&&global_flag_zahoda)
 		 {
 			 if(req.url.indexOf("add@3@")!=-1)
@@ -1067,6 +1070,121 @@ function send_chelleng()
 {
 	var res="<h2>текущий челенж</h2><p id='opisanie_chellenga_1'>"+common_users[global_index].not_complete_challenge.opisanie+"</p> <img id='list321_img' src = 'regexp.png'/><p><input type='text' id='text_for_ch_ch'><input type='file' id='files' name='files[]'  /></p><p><input type='button' value='отправить' id='addch1'  onclick='otprservch1()'></p>";
    return res;
+}
+
+function p_4tenie_polzovatelya_bd(log1)
+{
+	try{
+	console.log(fs.exists('\public_html/bd/bd_us/writeme_'+log1+'.txt', (exists) => {
+  console.log(exists ? 'it\'s there' : 'no passwd!');
+}));
+	console.log(fs.exists('\public_html/bd/bd_us/writeme_qqq.txt', (exists) => {
+  console.log(exists ? 'it\'s there' : 'no passwd!');
+}));
+	
+	//fs.writeFileSync('\public_html/bd/bd_us/writeme_'+p.login+'.txt', txt);
+	var text = fs.readFileSync('\public_html/bd/bd_us/writeme_'+log1+'.txt', 'utf8');
+	console.log(text);
+	}
+	catch(err){
+		console.log("error");
+	}
+}
+
+
+
+
+
+function sohran_polzovatelya_bd(log1)
+{
+	var p;
+	for(var i=0;i<common_users.length;++i)
+	{
+		if(common_users[i].login==log1)
+		{
+			p=common_users[i];
+			break;
+		}
+		
+	}
+	
+	
+	//txt+="@4@";
+	//for(var i=0;i<p.not_complete_challenge.length;++i)
+	//{
+		
+		
+		
+	//}
+	
+	
+	
+	var txt="@5@"+p.login+"@4@"+p.id+"@4@"+p.rank+"@4@"+p.mail+"@4@"+p.place_in_top+"@4@"+p.exp+"@4@"+p.photo+"@4@"+p.info+"@4@"+p.password+"@4@"+p.not_complete_challenge.opisanie+"@3@"+p.not_complete_challenge.photo+"@4@";
+	
+	for(var i=0;i<p.friend.length;++i)
+	{
+		txt+=p.friend[i].login+"@3@";
+		
+		
+	}
+	txt+="@4@";
+	for(var i=0;i<p.lenta_challenge.length;++i)
+	{
+		txt+=p.lenta_challenge[i].opisanie+"@3@";
+		for(var i2=0;i2<p.lenta_challenge[i].liked[i2];++i2)
+			
+			{
+				txt+=p.lenta_challenge[i].liked[i2].login+"@2@";
+				
+				
+			}
+			txt+="@3@"+p.lenta_challenge[i].photo;
+		
+		
+	}
+	txt+="@4@";
+	for(var i=0;i<p.complete_challenge.length;++i)
+	{
+		txt+=p.complete_challenge[i].opisanie+"@3@";
+		for(var i2=0;i2<p.complete_challenge[i].liked[i2];++i2)
+			
+			{
+				txt+=p.lenta_challenge[i].liked[i2].login+"@2@";
+				
+				
+			}
+			txt+="@3@"+p.complete_challenge[i].photo;
+		
+	}
+	//txt+="@4@";
+	//for(var i=0;i<p.not_complete_challenges_arr.length;++i)
+	//{
+		
+		
+		
+	//}
+	
+	txt+="@4@";
+	for(var i=0;i<p.followed.length;++i)
+	{
+		txt+=p.followed[i].login+"@3@";
+		
+		
+	}
+	txt+="@4@";
+	
+	
+	txt+="@5@";
+	fs.writeFileSync('\public_html/bd/bd_us/writeme_'+p.login+'.txt', txt);
+	console.log("bd_update");
+}
+
+
+function UP_bd(log1)
+{
+	
+	
+	
 }
 
 function send_top()
