@@ -301,7 +301,12 @@ DR.insertBefore(newDiv, DR.children[0]);
 			loadcontent("@profil@/"+ids.value,"content");
 			setLocation("profil.html&"+ids.value);
 			break;
-			
+			case 'follow_friend_sprava':
+			//
+			//loadcontent("@profil@/"+ids.value,"content");
+			loadcontent("@profil@/"+ids.value,"content");
+			setLocation("profil.html&"+ids.value);
+			break;
 			
 			case 'red_pr_1':
 			redaktor_profila();

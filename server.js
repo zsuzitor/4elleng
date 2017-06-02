@@ -36,7 +36,7 @@ function User(login,mail,password1) {
 	this.mail = mail;
 	this.place_in_top = top_users.length;
 	this.exp = 0;
-	
+	this.photo="regexp.png";
 	this.info="pusto"
 	this.password = password1;
 	
@@ -374,7 +374,7 @@ User.prototype.dell_fr = function(url1) {
 
 User.prototype.add_ch = function(arr) {
 		//сдесь проверять что что то отправлено
-							 var ch22=new challenge(arr[1],null)
+							 var ch22=new challenge(arr[1],null,"regexp.png")
 				 this.complete_challenge.push(ch22);
 				 this.lenta_challenge.push(ch22);
 				 
@@ -400,7 +400,7 @@ User.prototype.redactirov_pr = function(arr) {
 
 
 
-function User_prodv(login,mail,password1,id,place_in_top,exp,info,friend,lenta_challenge,complete_challenge,not_complete_challenges_arr,not_complete_challenge,followed) {
+function User_prodv(login,mail,password1,id,place_in_top,exp,info,friend,lenta_challenge,complete_challenge,not_complete_challenges_arr,not_complete_challenge,followed,str_ph) {
 	this.id = id;
 	this.rank =1;//0=админ 1=продви2=обыч3=бан трет 4=бан вт 5=бан перв
     this.login = login;
@@ -408,8 +408,9 @@ function User_prodv(login,mail,password1,id,place_in_top,exp,info,friend,lenta_c
 	this.place_in_top = place_in_top;
 	this.exp = exp;
 	this.info=info;
+	this.photo="regexp.png";
 	this.password = password1;
-	
+	this.photo=str_ph;
 	
 	//slice()
 	this.friend=friend.slice();
@@ -449,7 +450,7 @@ User_prodv.prototype.redactirov_pr =function(arr) {
 
 	
 	
-function User_Admin(login,mail,password1,id,place_in_top,exp,info,friend,lenta_challenge,complete_challenge,not_complete_challenges_arr,not_complete_challenge,followed) {
+function User_Admin(login,mail,password1,id,place_in_top,exp,info,friend,lenta_challenge,complete_challenge,not_complete_challenges_arr,not_complete_challenge,followed,str_ph) {
 	this.id = id;
 	this.rank =0;//0=админ 1=продви2=обыч3=бан трет 4=бан вт 5=бан перв
     this.login = login;
@@ -458,7 +459,7 @@ function User_Admin(login,mail,password1,id,place_in_top,exp,info,friend,lenta_c
 	this.exp = exp;
 	this.info=info;
 	this.password = password1;
-	
+	this.photo=str_ph;
 	
 	//slice()
 	this.friend=friend.slice();
@@ -561,7 +562,7 @@ User_Admin.prototype.com_str =function(arr) {
 	
 	
 	
-	function User_banned_lvl_3(login,mail,password1,id,bivsh_rank,place_in_top,exp,info,friend,lenta_challenge,complete_challenge,not_complete_challenges_arr,not_complete_challenge,followed) {	
+function User_banned_lvl_3(login,mail,password1,id,bivsh_rank,place_in_top,exp,info,friend,lenta_challenge,complete_challenge,not_complete_challenges_arr,not_complete_challenge,followed,str_ph) {	
 	//конструктор
 	this.id = id;
 	this.rank =3;//0=админ 1=продви2=обыч3=бан трет 4=бан вт 5=бан перв
@@ -572,7 +573,7 @@ User_Admin.prototype.com_str =function(arr) {
 	this.exp = exp;
 	this.info=info;
 	this.password = password1;
-	
+	this.photo=str_ph;
 	
 	//slice()
 	this.friend=friend.slice();
@@ -592,7 +593,7 @@ User_banned_lvl_3.prototype.constructor = User_banned_lvl_3;
 	
 	
 	
-	function User_banned_lvl_2(login,mail,password1,id,bivsh_rank,place_in_top,exp,info,friend,lenta_challenge,complete_challenge,not_complete_challenges_arr,not_complete_challenge,followed) {	
+function User_banned_lvl_2(login,mail,password1,id,bivsh_rank,place_in_top,exp,info,friend,lenta_challenge,complete_challenge,not_complete_challenges_arr,not_complete_challenge,followed,str_ph) {	
 	//конструктор
 	this.id = id;
 	this.rank =4;//0=админ 1=продви2=обыч3=бан трет 4=бан вт 5=бан перв
@@ -603,7 +604,7 @@ User_banned_lvl_3.prototype.constructor = User_banned_lvl_3;
 	this.exp = exp;
 	this.info=info;
 	this.password = password1;
-	
+	this.photo=str_ph;
 	
 	//slice()
 	this.friend=friend.slice();
@@ -634,7 +635,7 @@ User_banned_lvl_2.prototype.like = function(arr) {
 	
 	
 	
-function User_banned_lvl_1(login,mail,password1,id,bivsh_rank,place_in_top,exp,info,friend,lenta_challenge,complete_challenge,not_complete_challenges_arr,not_complete_challenge,followed) {	
+function User_banned_lvl_1(login,mail,password1,id,bivsh_rank,place_in_top,exp,info,friend,lenta_challenge,complete_challenge,not_complete_challenges_arr,not_complete_challenge,followed,str_ph) {	
 	//конструктор
 	this.id = id;
 	this.rank =5;//0=админ 1=продви2=обыч3=бан трет 4=бан вт 5=бан перв
@@ -645,7 +646,7 @@ function User_banned_lvl_1(login,mail,password1,id,bivsh_rank,place_in_top,exp,i
 	this.exp = exp;
 	this.info=info;
 	this.password = password1;
-	
+	this.photo=str_ph;
 	
 	//slice()
 	this.friend=friend.slice();
@@ -670,28 +671,31 @@ return "";
 
 	
 	
-	function challenge(opisanie,image1) {
+function challenge(opisanie,image1,image1) {
 	this.opisanie = opisanie;
     this.now = new Date();
 	this.liked=[];
-	//this.photo=image1;
+	this.photo=image1;
 }
 
 
-
+//var tt1=183+i;
+	//return 
 
 //для тестов заполнение
 for(var i=0;i<50;++i)
 {
+	var tt1=183+i;
 	challenges.push(new challenge('testovoe_opisanie'+i,function(){
-	var photo1 = new Image ();
-	photo1.src = 'regexp.png';
-	}));
+	//var photo1 = new Image ();
+	///bd/image/Фото №183.jpg
+	
+	},'bd/image/photo'+tt1+'.jpg'));
 	
 }
 
 var hfhfh=[];
-var glavnii_user_test1=new User_Admin('ADMIN','ADMIN@mail.com',"12345",0,0,0,"admin",hfhfh,hfhfh,hfhfh,hfhfh,challenges[0],hfhfh);
+var glavnii_user_test1=new User_Admin('ADMIN','ADMIN@mail.com',"12345",0,0,0,"admin",hfhfh,hfhfh,hfhfh,hfhfh,challenges[0],hfhfh,"admin.jpg");
 
 common_users.push(glavnii_user_test1);
 top_users.push(glavnii_user_test1);
@@ -700,7 +704,7 @@ top_users.push(glavnii_user_test1);
 var ne_glavnii_user_test=new User('ne_ADMIN','ne_ADMIN@mail.com',"123");//('ADMIN','ADMIN@mail.com')
 ne_glavnii_user_test.info="ne_INFORMACIYA";
 ne_glavnii_user_test.complete_challenge.push(challenges[0]);
-
+ne_glavnii_user_test.photo="bd/image/photo264.jpg";
 ne_glavnii_user_test.lenta_challenge.push(challenges[0]);
 
 common_users.push(ne_glavnii_user_test);
@@ -709,7 +713,7 @@ top_users.push(ne_glavnii_user_test);
 var ne1_glavnii_user_test=new User('ne1_ADMIN','ne_ADMIN@mail.com',"123");//('ADMIN','ADMIN@mail.com')
 ne1_glavnii_user_test.info="ne_INFORMACIYA";
 ne1_glavnii_user_test.complete_challenge.push(challenges[0]);
-
+ne1_glavnii_user_test.photo="bd/image/photo256.jpg";
 ne1_glavnii_user_test.lenta_challenge.push(challenges[0]);
 
 common_users.push(ne1_glavnii_user_test);
@@ -868,7 +872,7 @@ console.log(req.url);
 			 {//<input type='button' value='glavnii_user_test.friend[i].login' id='follow_friend'  onclick='vote(this)'>
 				 //res1+="<li><div id='block_friend_log"+common_users[global_index].friend[i].login+"' class='block_content'><img src='regexp.png' width='50' height='50'><p><input type='button' style='width:100x;height:40px' value='"+common_users[global_index].friend[i].login+"' id='follow_friend_sprava'  onclick='vote(this)'></p><p><input type='button' style='width:50x;height:40px'  id='trmp_knopkadel"+common_users[global_index].friend[i].login+"' class='ydalit_sprava_dr_1' value='удалить'  onclick='dell(this)'></p></div></li>";
 			 
-			 res1+="<li><div id='block_friend_log"+common_users[global_index].friend[i].login+"' class='block_content'><img src='regexp.png' width='50' height='50'><p><input type='button' style='width:100x;height:40px' value='"+common_users[global_index].friend[i].login+"' id='follow_friend_sprava'  onclick='vote(this)'></p><p><input type='button' style='width:50x;height:40px'  id='trmp_knopkadel"+common_users[global_index].friend[i].login+"' class='ydalit_sprava_dr_1' value='удалить'  onclick='dell(this)'></p></div></li>";
+			 res1+="<li><div id='block_friend_log"+common_users[global_index].friend[i].login+"' class='block_content'><img src='"+common_users[global_index].friend[i].photo+"' width='50' height='50'><p><input type='button' style='width:100x;height:40px' value='"+common_users[global_index].friend[i].login+"' id='follow_friend_sprava'  onclick='vote(this)'></p><p><input type='button' style='width:50x;height:40px'  id='trmp_knopkadel"+common_users[global_index].friend[i].login+"' class='ydalit_sprava_dr_1' value='удалить'  onclick='dell(this)'></p></div></li>";
 			 
 			 }
 			 res1+="</ol></div>";
@@ -896,7 +900,7 @@ console.log(req.url);
 						 
 						console.log("-------------");
 						
-						var a=new User_prodv(tek.login,tek.mail,tek.password,tek.id,tek.place_in_top,tek.exp,tek.info,tek.friend,tek.lenta_challenge,tek.complete_challenge,tek.not_complete_challenges_arr,tek.not_complete_challenge,tek.followed)
+						var a=new User_prodv(tek.login,tek.mail,tek.password,tek.id,tek.place_in_top,tek.exp,tek.info,tek.friend,tek.lenta_challenge,tek.complete_challenge,tek.not_complete_challenges_arr,tek.not_complete_challenge,tek.followed,tek.photo)
 						console.log("-------------");
 						//return a;
 						
@@ -1033,7 +1037,7 @@ console.log(req.url);
 		 
 		 
 
-		 function accept_new_user(login,mail,pass)
+function accept_new_user(login,mail,pass)
 {
 	var a=new User(login,mail,pass);
 	common_users.push(a);
@@ -1050,8 +1054,8 @@ function send_index()
 	var res="<h2>Лента</h2><ol class='str11' id='str'>";
 	
 	for(var i=common_users[global_index].lenta_challenge.length-1;i>=0;i--)
-	{
-		res+="<li><div class='block_content' id='block_content"+i+"'><p>"+common_users[global_index].lenta_challenge[i].opisanie+"</p><img src='regexp.png' width='500' height='500'><input type='button' id='trmp_knopkalike"+i+"' class='like_del_knopka' value='лайк'  onclick='likeconnect(this)'><input  type='text' size='10' id='like_count"+i+"' value='"+common_users[global_index].lenta_challenge[i].liked.length+"'disabled><input type='button' id='trmp_knopkadel_zapis"+i+"' class='like_del_knopka' value='удалить'  onclick='del_zapis_ch_connect(this)'></div></li>";
+	{//photo
+		res+="<li><div class='block_content' id='block_content"+i+"'><p>"+common_users[global_index].lenta_challenge[i].opisanie+"</p><img src='"+common_users[global_index].lenta_challenge[i].photo+"' width='500' height='500'><input type='button' id='trmp_knopkalike"+i+"' class='like_del_knopka' value='лайк'  onclick='likeconnect(this)'><input  type='text' size='10' id='like_count"+i+"' value='"+common_users[global_index].lenta_challenge[i].liked.length+"'disabled><input type='button' id='trmp_knopkadel_zapis"+i+"' class='like_del_knopka' value='удалить'  onclick='del_zapis_ch_connect(this)'></div></li>";
 		  //res+='<li><div class="block_content" id="block_content'+i+'"><p>'+glavnii_user_test.lenta_challenge[i].opisanie+'</p><img src="regexp.png" width="500" height="500"><input type="button" id="trmp_knopkalike'+i+'" value="лайк"  onclick="likeconnect(this)"><input size="40" id="like_count'+i+'" value="'+glavnii_user_test.lenta_challenge[i].liked.length+'"disabled><input type="button" id="trmp_knopkadel_zapis'+i+'" value="удалить"  onclick="del_zapis_ch_connect(this,"profil")"></div></li>';
 	
 	}
@@ -1079,7 +1083,7 @@ function send_top()
 	for(var i=top_users.length-1;i>=0;i--)
 	{
 		
-		res+="<li><div class='block_content' id='block_content"+i+"'><p><input type='button' id='follow_friend' value='"+top_users[i].login+"'  onclick='vote(this)'></p><p>ЭКСПА="+top_users[i].exp+"</p><img src='regexp.png' width='500' height='500'></div></li>";
+		res+="<li><div class='block_content' id='block_content"+i+"'><p><input type='button' id='follow_friend' value='"+top_users[i].login+"'  onclick='vote(this)'></p><p>ЭКСПА="+top_users[i].exp+"</p><img src='"+top_users[i].photo+"' width='500' height='500'></div></li>";
 		 
 	}
 	res+="</ol>";
@@ -1111,21 +1115,28 @@ function send_profil(login)
 	//res+="";
 	//res+="<p>"+prof.login+"</p><p>ЭКСПА="+prof.exp+"</p><p>ID="+prof.id+"</p><p><input  size='40' id='profil_info_str' value='ИНФО:"+prof.info+" 'disabled>"+t65+"</p><img src=regexp.png width='150' height='200'></div><div><ol class='str11' id='str'>";
 	
-	res+="<div class='layer1'><img src=regexp.png width='300' height='450'><input type='file' id='files_photo_pr'/></div><div class='layer2'><p>"+prof.login+"</p><p>ЭКСПА="+prof.exp+"</p><p>ID="+prof.id+"</p><p><input  size='40' id='profil_info_str' value='ИНФО:"+prof.info+" 'disabled></p><p>"+t65+"</p>";
+	res+="<div class='layer1'><img src='"+prof.photo+"' width='300' height='450'><input type='file' id='files_photo_pr'/></div><div class='layer2'><p>"+prof.login+"</p><p>ЭКСПА="+prof.exp+"</p><p>ID="+prof.id+"</p><p><input  size='40' id='profil_info_str' value='ИНФО:"+prof.info+" 'disabled></p><p>"+t65+"</p>";
 	
 	//if(common_users[global_index].rank==0&&(login==common_users[global_index].login))
 	//{
 		//t65="<input  size='40' id='com_str_user' value='komandnaya stroka'>";
 	//}
 	
-	res+="</div><div class='layer3'></div>";//</div>
+	res+="</div><div class='layer3'></div><ol class ='str11' id='str'>";//<div class='to_4to_nige_pro_ch'>
+	
+	// index   res+="<li><div class='block_content' id='block_content"+i+"'><p>"+common_users[global_index].lenta_challenge[i].opisanie+"</p><img src='regexp.png' width='500' height='500'><input type='button' id='trmp_knopkalike"+i+"' class='like_del_knopka' value='лайк'  onclick='likeconnect(this)'><input  type='text' size='10' id='like_count"+i+"' value='"+common_users[global_index].lenta_challenge[i].liked.length+"'disabled><input type='button' id='trmp_knopkadel_zapis"+i+"' class='like_del_knopka' value='удалить'  onclick='del_zapis_ch_connect(this)'></div></li>";
+		
+	
+	
+	
+	
 	
 	//res+="<p>ЭКСПА="+prof.exp+"</p><p><input  size='40' id='profil_info_str' value='ИНФО:"+prof.info+" 'disabled>"+t65+"</p></div><div><ol class='str11' id='str'>";
 	//res+="<p>"+prof.login+"</p><p>ID="+prof.id+"</p><img src=regexp.png width='150' height='200'>";
 	for(var i=prof.complete_challenge.length-1;i>=0;i--)
 	{
 		//res+="<div><li><div class='block_content' id='block_content"+i+"'><p>"+prof.complete_challenge[i].opisanie+"</p><img src='regexp.png' width='500' height='500'><input type='button' id='trmp_knopkalike"+i+"' value='лайк'  onclick='likeconnect(this)'><input size='40' id='like_count"+i+"' value='"+prof.complete_challenge[i].liked.length+"'disabled>";
-		res+="<div class='to_4to_nige_pro_ch'><ol class ='str11' id='str'><li><div class='block_content' id='block_content"+i+"'><p>"+prof.complete_challenge[i].opisanie+"</p><img src='regexp.png' width='500' height='500'><input type='button' id='trmp_knopkalike"+i+"' value='лайк' class='like_del_knopka'  onclick='likeconnect(this)'><input type='text' size='10' id='like_count"+i+"' value='"+prof.complete_challenge[i].liked.length+"'disabled>";
+		res+="<li><div class='block_content' id='block_content"+i+"'><p>"+prof.complete_challenge[i].opisanie+"</p><img src='"+prof.complete_challenge[i].photo+"' width='500' height='500'><input type='button' id='trmp_knopkalike"+i+"' value='лайк' class='like_del_knopka'  onclick='likeconnect(this)'><input type='text' size='10' id='like_count"+i+"' value='"+prof.complete_challenge[i].liked.length+"'disabled>";
 		
 		
 		if(login==common_users[global_index].login)
@@ -1134,7 +1145,7 @@ function send_profil(login)
 		res+="</div></li>";
 		
 	}
-	res+="</ol></div>";//
+	res+="</ol>";//
 	return res;
 	
 	//var res="<h2>testtest</h2><p>1test1</p>";
