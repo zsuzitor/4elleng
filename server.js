@@ -70,7 +70,7 @@ User.prototype.like = function(arr) {
 			 
 			 for(var i=0;i<this.complete_challenge[arr[2]].liked.length;++i)
 			 {
-				 if(this.complete_challenge[arr[2]].liked[i]==this)
+				 if(this.complete_challenge[arr[2]].liked[i]==this.login)
 				 {
 					 
 					  
@@ -85,7 +85,7 @@ User.prototype.like = function(arr) {
 			 }
 			 if(flag==0)
 			 {
-			 this.complete_challenge[arr[2]].liked.push(this);
+			 this.complete_challenge[arr[2]].liked.push(this.login);
 			 /*for(var i=0;i<common_users[global_index].lenta_challenge.length;++i)
 			 {
 				 if(common_users[global_index].lenta_challenge[i]==common_users[global_index].complete_challenge[arr[2]])
@@ -109,7 +109,7 @@ User.prototype.like = function(arr) {
 			 
 			 for(var i=0;i<this.lenta_challenge[arr[2]].liked.length;++i)
 			 {
-				 if(this.lenta_challenge[arr[2]].liked[i]==this)
+				 if(this.lenta_challenge[arr[2]].liked[i]==this.login)
 				 {
 					 
 					  
@@ -124,7 +124,7 @@ User.prototype.like = function(arr) {
 			 }
 			 if(flag==0)
 			 {
-			 this.lenta_challenge[arr[2]].liked.push(this);
+			 this.lenta_challenge[arr[2]].liked.push(this.login);
 			 /*for(var i=0;i<common_users[global_index].complete_challenge.length;++i)
 			 {
 				 if(common_users[global_index].complete_challenge[i]==common_users[global_index].lenta_challenge[arr[2]])
@@ -190,7 +190,7 @@ User.prototype.like = function(arr) {
 		 for(var i=0;i<common_users[index].complete_challenge[arr[2]].liked.length;++i)
 			 {
 				 
-				 if(common_users[index].complete_challenge[arr[2]].liked[i]==this)
+				 if(common_users[index].complete_challenge[arr[2]].liked[i]==this.login)
 				 {
 					  //console.log(common_users[index]);
 					  
@@ -217,7 +217,7 @@ User.prototype.like = function(arr) {
 			 {
 				 console.log(common_users[index].login);
 				 console.log(common_users[index]);
-			 common_users[index].complete_challenge[arr[2]].liked.push(this);
+			 common_users[index].complete_challenge[arr[2]].liked.push(this.login);
 			 }
 		 
 		 
@@ -322,9 +322,10 @@ User.prototype.add_new_fr = function(url1) {
 					 this.friend.push(common_users[i]);
 					 //var alphaNumeric = alpha.concat(numeric);
 						common_users[i].followed.push(this);
-						sohran_polzovatelya_bd(common_users[i].login)
+						
 					 this.lenta_challenge=this.lenta_challenge.concat(common_users[i].complete_challenge);
 					 console.log("tr1ue");
+					 sohran_polzovatelya_bd(common_users[i].login);
 					 global_flag_zahoda=false;
 					 return "tr1ue";
 				 }
@@ -341,6 +342,7 @@ User.prototype.dell_fr = function(url1) {
 		
 		
 		 global_flag_zahoda=false;
+		 var rty=this.login;
 				 //удаление друга
 				 var arr= url1.substring(13, url1.length);
 			   arr = arr.split('@3@');
@@ -351,8 +353,9 @@ User.prototype.dell_fr = function(url1) {
 					 {
 						 if(this==this.friend[i].followed[i1])
 						 {
+							  rty=this.friend[i].followed[i1].login;
 							 this.friend[i].followed.splice(i1, 1);
-							 sohran_polzovatelya_bd(this.friend[i].followed)
+							 
 						}
 						 
 					 }
@@ -360,7 +363,7 @@ User.prototype.dell_fr = function(url1) {
 					 this.friend.splice(i, 1);
 					 
 
-					 
+					 sohran_polzovatelya_bd(rty);
 					 console.log("tr1ue");
 					 
 					 return "tr1ue";
@@ -743,8 +746,78 @@ function accept(req, res) {
 	if(fist_zapusk)
 	{
 		common_users= UP_BD();
-		//for(var i=0;i<common_users.length;++i)
-			//console.log(common_users[i].login);
+		if(common_users.length>1&&common_users[0].friend.length>0)
+		{
+		console.log("test1"+common_users[0].friend[0]);
+		console.log("test2"+common_users[0].friend[0].login);
+		}
+		var tyyyyyyy1=[];
+		var tyyyyyyy2=[];
+	 for(var i=0;i<common_users.length;++i)
+	 {
+		 console.log("свой друг1"+common_users[i].login);
+		 for(var i2=0;i2<common_users[i].friend.length-1;++i2)
+		 {
+			  console.log("свой друг2"+common_users[i].friend[i2]);
+			 for(var i3=0;i3<common_users.length;++i3)
+			 {
+				  console.log("свой друг3"+common_users[i3].login);
+				 if(common_users[i3].login==common_users[i].friend[i2])
+					{
+						console.log("зачтено");
+						
+						
+						tyyyyyyy1.push(common_users[i3]);
+					}
+				 
+			 }
+			 
+			 
+		 }
+		 common_users[i].friend=tyyyyyyy1.slice();
+		 tyyyyyyy1=[];
+		 //.slice(i3, 1)
+		 //if(common_users[i].friend.length>1)
+		 //{
+			// common_users[i].friend.splice(common_users[i].friend.length-1, 1);
+		 //}
+		 
+	 }
+	 
+	 
+	 
+	 
+	 for(var i=0;i<common_users.length;++i)
+	 {
+		 console.log("свой друг1"+common_users[i].login);
+		 for(var i2=0;i2<common_users[i].followed.length-1;++i2)
+		 {
+			  console.log("свой друг2"+common_users[i].followed[i2]);
+			 for(var i3=0;i3<common_users.length;++i3)
+			 {
+				  console.log("свой друг3"+common_users[i3].login);
+				 if(common_users[i3].login==common_users[i].followed[i2])
+					{
+						console.log("зачтено");
+						//common_users[i].followed[i2]= common_users.slice(i3, 1)
+						tyyyyyyy2.push(common_users[i3]);
+					}
+				 
+			 }
+			 
+			 
+		 }
+		 if(common_users[i].followed.length>1)
+		 {
+			 common_users[i].followed.splice(common_users[i].followed.length-1, 1);
+		 }
+		 common_users[i].followed=tyyyyyyy2.slice();
+		  tyyyyyyy2=[];
+	 }
+		
+		
+			
+		
 		fist_zapusk=false;
 		
 	}
@@ -775,8 +848,10 @@ console.log(req.url);
 	 console.log("_-_");
 				 
 			 }
+			
 	 }
 	 else{
+		
 		 global_flag_zahoda=true;
 		
 		 if(req.url=="/public_html/[object%20File]"&&global_flag_zahoda)
@@ -857,9 +932,11 @@ console.log(req.url);
 		 
 		 if(global_index!=-1&&global_flag_zahoda)
 			 {
-				 
-		  
-		  
+				 if(common_users[global_index].friend.length>0)
+				 {
+				 console.log("super"+common_users[global_index].friend[0].login);
+		  console.log("super"+common_users[global_index].friend[0]);
+				 }
 		  
 		 if(req.url.indexOf("@3@")!=-1&&global_flag_zahoda)
 		 {
@@ -991,7 +1068,7 @@ console.log(req.url);
 				 res.end(tyt_res);
 				 
 			 }
-		 
+		
 		 if(global_flag_zahoda)
 		 {
 			 switch(req.url)
@@ -1040,6 +1117,7 @@ console.log(req.url);
 			break;
 			
 		}
+		
 		if(req.url.indexOf("/@profil@/")!=-1&&global_flag_zahoda)
 		 {
 			
@@ -1047,7 +1125,7 @@ console.log(req.url);
 			 console.log(req.url.substring(req.url.indexOf("/@profil@/")+10,req.url.length));
 			 global_flag_zahoda=false;
 			 res.end(send_profil(req.url.substring(req.url.indexOf("/@profil@/")+10,req.url.length)));
-			 
+			 console.log("свой профиль7"+common_users[global_index].login);
 		 } 
 		 }
 		 sohran_polzovatelya_bd(common_users[global_index].login);
@@ -1120,9 +1198,13 @@ function p_4tenie_polzovatelya_bd(log1)
 	
 	console.log("_____________");
 	var mass_friend=[];
+	var mass_friend1=[];
 	if(mass4[11]!="")
+	{
 	 mass_friend=mass4[11].split("@#3#@");
-	
+	 
+	 
+	}
 		
 	var mass_lenta_challenge=[];
 	var mass_lenta_challenge_mass=[];
@@ -1134,15 +1216,15 @@ function p_4tenie_polzovatelya_bd(log1)
 	
 	for(var i=0;i<mass_lenta_challenge_mass.length-1;i+=3)
 	{
-		var tt1=new challenge(mass_lenta_challenge_mass[0],null,mass_lenta_challenge_mass[2]);
+		var tt1=new challenge(mass_lenta_challenge_mass[i],null,mass_lenta_challenge_mass[i+2]);
 		var tt2=[];
-		if(mass_lenta_challenge_mass[1]!="")
+		if(mass_lenta_challenge_mass[i+1]!="")
 		{
-			 tt2=mass_lenta_challenge_mass[1].split("@#2#@");
+			 tt2=mass_lenta_challenge_mass[i+1].split("@#2#@");
 		}
 		tt2.splice(tt2.length-1, 1);
 		tt1.liked=tt2;
-		console.log("TEST="+mass_lenta_challenge_mass[0]+mass_lenta_challenge_mass[2]+tt2);
+		console.log("TEST="+mass_lenta_challenge_mass[i]+mass_lenta_challenge_mass[i+2]+tt2);
 		//for(var i2=0;i2<tt2.length;++i2)
 		mass_lenta_challenge.push(tt1);
 		
@@ -1156,18 +1238,18 @@ function p_4tenie_polzovatelya_bd(log1)
 	var mass_complete_challenge=[];
 	if(mass4[13]!="")
 	 mass_complete_challenge_mass=mass4[13].split("@#3#@");// массив->описание те кто лайкнул через 2 потом фото           много раз то что слева через тройки
-	
+	console.log("++++"+mass_complete_challenge_mass+"++++");
 	for(var i=0;i<mass_complete_challenge_mass.length-1;i+=3)
 	{
-		var tt1=new challenge(mass_complete_challenge_mass[0],null,mass_complete_challenge_mass[2]);
+		var tt1=new challenge(mass_complete_challenge_mass[i],null,mass_complete_challenge_mass[i+2]);
 		var tt2=[];
-		if(mass_complete_challenge_mass[1]!="")
-		 tt2=mass_complete_challenge_mass[1].split("@#2#@");
+		if(mass_complete_challenge_mass[i+1]!="")
+		 tt2=mass_complete_challenge_mass[i+1].split("@#2#@");
 	 tt2.splice(tt2.length-1, 1);
 		tt1.liked=tt2;
 		//for(var i2=0;i2<tt2.length;++i2)
 		mass_complete_challenge.push(tt1);
-		
+		console.log("TEST="+mass_complete_challenge_mass[i]+mass_complete_challenge_mass[i+2]+tt2);
 		
 	}
 	
@@ -1336,7 +1418,7 @@ function sohran_polzovatelya_bd(log1)
 		for(var i2=0;i2<p.lenta_challenge[i].liked.length;++i2)
 			
 			{
-				txt+=p.lenta_challenge[i].liked[i2].login+"@#2#@";
+				txt+=p.lenta_challenge[i].liked[i2]+"@#2#@";
 				
 				
 			}
@@ -1351,7 +1433,7 @@ function sohran_polzovatelya_bd(log1)
 		for(var i2=0;i2<p.complete_challenge[i].liked.length;++i2)
 			
 			{
-				txt+=p.complete_challenge[i].liked[i2].login+"@#2#@";
+				txt+=p.complete_challenge[i].liked[i2]+"@#2#@";
 				
 				
 			}
@@ -1399,6 +1481,9 @@ function UP_BD(){
 		//console.log("LOGINI"+p_4tenie_polzovatelya_bd(tt1_log[i]).login);
 		}
 	}
+	
+	
+	
 	}
 	return res;
 }
@@ -1413,7 +1498,8 @@ function UP_BD(){
 function send_top()
 {
 	//top_users=p_4tenie_spiska_polzovatelei_zanos(1,"");
-	top_users=common_users;
+	
+	top_users=common_users.slice();
 	top_users.sort(function(a, b) {
   if(a.exp>b.exp) return 1;
   else return -1;
