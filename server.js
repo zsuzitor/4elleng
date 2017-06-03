@@ -14,7 +14,7 @@ var challenges = [];
 var GlobalID=0;
 var global_index=-1;
 var global_flag_zahoda=true;
-
+var fist_zapusk=true;
 
 
 //(login,mail,password1,id,place_in_top,exp,info,   friend,lenta_challenge,complete_challenge,not_complete_challenges_arr,not_complete_challenge,followed)
@@ -226,7 +226,7 @@ User.prototype.like = function(arr) {
 	 }
 	 
 	 
-		 
+		 sohran_polzovatelya_bd(common_users[index].login)
 		 global_flag_zahoda=false;
 		 return "error";
 		 //res.end("error");
@@ -322,6 +322,7 @@ User.prototype.add_new_fr = function(url1) {
 					 this.friend.push(common_users[i]);
 					 //var alphaNumeric = alpha.concat(numeric);
 						common_users[i].followed.push(this);
+						sohran_polzovatelya_bd(common_users[i].login)
 					 this.lenta_challenge=this.lenta_challenge.concat(common_users[i].complete_challenge);
 					 console.log("tr1ue");
 					 global_flag_zahoda=false;
@@ -351,7 +352,7 @@ User.prototype.dell_fr = function(url1) {
 						 if(this==this.friend[i].followed[i1])
 						 {
 							 this.friend[i].followed.splice(i1, 1);
-							 
+							 sohran_polzovatelya_bd(this.friend[i].followed)
 						}
 						 
 					 }
@@ -491,6 +492,7 @@ User_Admin.prototype.com_str =function(arr) {
 				var a=new User_banned_lvl_1(tek.login,tek.mail,tek.password,tek.id,tek.rank,tek.place_in_top,tek.exp,tek.info,tek.friend,tek.lenta_challenge,tek.complete_challenge,tek.not_complete_challenges_arr,tek.not_complete_challenge,tek.followed)
 			
 		common_users[i]=a;
+		sohran_polzovatelya_bd(a.login)
 		console.log("ban="+common_users[i].login+common_users[i].rank);
 		return "true";
 			}
@@ -509,6 +511,7 @@ User_Admin.prototype.com_str =function(arr) {
 				var a=new User_banned_lvl_2(tek.login,tek.mail,tek.password,tek.id,tek.rank,tek.place_in_top,tek.exp,tek.info,tek.friend,tek.lenta_challenge,tek.complete_challenge,tek.not_complete_challenges_arr,tek.not_complete_challenge,tek.followed)
 			
 		common_users[i]=a;
+		sohran_polzovatelya_bd(a.login)
 		console.log("ban="+common_users[i].login+common_users[i].rank);
 		return "true";
 			}
@@ -527,6 +530,7 @@ User_Admin.prototype.com_str =function(arr) {
 				var a=new User_banned_lvl_3(tek.login,tek.mail,tek.password,tek.id,tek.rank,tek.place_in_top,tek.exp,tek.info,tek.friend,tek.lenta_challenge,tek.complete_challenge,tek.not_complete_challenges_arr,tek.not_complete_challenge,tek.followed)
 			
 		common_users[i]=a;
+		sohran_polzovatelya_bd(a.login)
 		console.log("ban="+common_users[i].login+common_users[i].rank);
 		return "true";
 			}
@@ -545,6 +549,7 @@ User_Admin.prototype.com_str =function(arr) {
 				var a=new User_prodv(tek.login,tek.mail,tek.password,tek.id,tek.place_in_top,tek.exp,tek.info,tek.friend,tek.lenta_challenge,tek.complete_challenge,tek.not_complete_challenges_arr,tek.not_complete_challenge,tek.followed)
 			
 		common_users[i]=a;
+		sohran_polzovatelya_bd(a.login)
 		return "true";
 			}
 			
@@ -694,7 +699,7 @@ for(var i=0;i<50;++i)
 	},'bd/image/photo'+tt1+'.jpg'));
 	
 }
-
+/*
 var hfhfh=[];
 var glavnii_user_test1=new User_Admin('ADMIN','ADMIN@mail.com',"12345",0,0,0,"admin",hfhfh,hfhfh,hfhfh,hfhfh,challenges[0],hfhfh,"admin.jpg");
 
@@ -719,7 +724,7 @@ ne1_glavnii_user_test.lenta_challenge.push(challenges[0]);
 
 common_users.push(ne1_glavnii_user_test);
 top_users.push(ne1_glavnii_user_test);
-
+*/
 
 
 
@@ -733,6 +738,16 @@ top_users.push(ne1_glavnii_user_test);
 
 
 function accept(req, res) {
+
+
+	if(fist_zapusk)
+	{
+		common_users= UP_BD();
+		//for(var i=0;i<common_users.length;++i)
+			//console.log(common_users[i].login);
+		fist_zapusk=false;
+		
+	}
 console.log(req.url);
 
 		 
@@ -801,7 +816,7 @@ console.log(req.url);
 				 
 				 
 			 }
-			 console.log(p_4tenie_polzovatelya_bd(arr[0]));
+			 //console.log(p_4tenie_polzovatelya_bd(arr[0]));
 			 
 			 global_flag_zahoda=false;
 			 console.log("fa1lse");
@@ -1083,53 +1098,80 @@ function send_chelleng()
 
 
 
-
-
+//p_4tenie_polzovatelya_bd(log1)
+//sohran_polzovatelya_bd(log1)
 
 function p_4tenie_polzovatelya_bd(log1)
 {
-	try{
+	//try{
 	
 	
 	//fs.writeFileSync('\public_html/bd/bd_us/writeme_'+p.login+'.txt', txt);
 	var text = fs.readFileSync('\public_html/bd/bd_us/writeme_'+log1+'.txt', 'utf8');
 	
 	//var mass5=text.split("@5@");
-	var mass4=text.split("@4@");
-	var mass_friend=mass4[11].split("@3@");
-	var mass_lenta_challenge_mass=mass4[12].split("@3@");// массив->описание те кто лайкнул через 2 потом фото           много раз то что слева через тройки
-	var mass_lenta_challenge=[];
-	//var mass_complete_challenge_mass=mass4[13].split("@3@");
-	//var mass_complete_challenge=[];
-	//var mass_followed_mass=mass4[14].split("@3@");
-	var mass_followed_mass=mass4[14].split("@3@");
+	var mass4=text.split("@#4#@");
+	console.log("_____________");
+	for(var i=0;i<mass4.length;++i)
+	{
+		console.log(mass4[i]);
+		
+	}
 	
-	for(var i=0;i<mass_lenta_challenge_mass.length;i+=3)
+	console.log("_____________");
+	var mass_friend=[];
+	if(mass4[11]!="")
+	 mass_friend=mass4[11].split("@#3#@");
+	
+		
+	var mass_lenta_challenge=[];
+	var mass_lenta_challenge_mass=[];
+	if(mass4[12]!="")
+	 mass_lenta_challenge_mass=mass4[12].split("@#3#@");// массив->описание те кто лайкнул через 2 потом фото           много раз то что слева через тройки
+	console.log("++++"+mass_lenta_challenge_mass+"++++");
+	
+	
+	
+	for(var i=0;i<mass_lenta_challenge_mass.length-1;i+=3)
 	{
 		var tt1=new challenge(mass_lenta_challenge_mass[0],null,mass_lenta_challenge_mass[2]);
-		var tt2=mass_lenta_challenge_mass[1].split("@2@");
+		var tt2=[];
+		if(mass_lenta_challenge_mass[1]!="")
+		{
+			 tt2=mass_lenta_challenge_mass[1].split("@#2#@");
+		}
+		tt2.splice(tt2.length-1, 1);
 		tt1.liked=tt2;
+		console.log("TEST="+mass_lenta_challenge_mass[0]+mass_lenta_challenge_mass[2]+tt2);
 		//for(var i2=0;i2<tt2.length;++i2)
 		mass_lenta_challenge.push(tt1);
 		
 	}
 	
+	var mass_followed_mass=[];
+	if(mass4[14]!="")
+	mass_followed_mass=mass4[14].split("@#3#@");
 	
-	
-	
-	var mass_complete_challenge_mass=mass4[13].split("@3@");// массив->описание те кто лайкнул через 2 потом фото           много раз то что слева через тройки
+	var mass_complete_challenge_mass=[];
 	var mass_complete_challenge=[];
-	for(var i=0;i<mass_complete_challenge_mass.length;i+=3)
+	if(mass4[13]!="")
+	 mass_complete_challenge_mass=mass4[13].split("@#3#@");// массив->описание те кто лайкнул через 2 потом фото           много раз то что слева через тройки
+	
+	for(var i=0;i<mass_complete_challenge_mass.length-1;i+=3)
 	{
 		var tt1=new challenge(mass_complete_challenge_mass[0],null,mass_complete_challenge_mass[2]);
-		var tt2=mass_complete_challenge_mass[1].split("@2@");
+		var tt2=[];
+		if(mass_complete_challenge_mass[1]!="")
+		 tt2=mass_complete_challenge_mass[1].split("@#2#@");
+	 tt2.splice(tt2.length-1, 1);
 		tt1.liked=tt2;
 		//for(var i2=0;i2<tt2.length;++i2)
 		mass_complete_challenge.push(tt1);
 		
+		
 	}
 	
-	
+	//console.log(mass4[0]+"__"+mass4[3]+"__"+mass4[8]+"__"+mass4[1]+"__"+mass4[4]+"__"+mass4[5]+"__"+mass4[7]+"__"+mass_friend+"__"+mass_lenta_challenge+"__"+mass_complete_challenge+"__"+null+"__"+mass4[9]+"__"+null+"__"+mass4[10]+"__"+mass_followed_mass,mass4[6]);
 	
 	
 	
@@ -1139,21 +1181,23 @@ function p_4tenie_polzovatelya_bd(log1)
 	//User_Admin(login,mail,password1,id,place_in_top,exp,info,friend,lenta_challenge,complete_challenge,not_complete_challenges_arr,not_complete_challenge,followed,str_ph)
 	
 	var TEMP_USER_RES;
+	var mysor=[];
 	switch(mass4[2]){
 		//0=админ 1=продви2=обыч3=бан трет 4=бан вт 5=бан перв
-		case 0:
+		case "0":
 		//админ
-		TEMP_USER_RES=new User_Admin(mass4[0],mass4[3],mass4[8],mass4[1],mass4[4],mass4[5],mass4[7],mass_friend,mass_lenta_challenge,mass_complete_challenge,null,new challenge(mass4[9],null,mass4[10]),mass_followed_mass,mass4[6]);
+		TEMP_USER_RES=new User_Admin(mass4[0],mass4[3],mass4[8],mass4[1],mass4[4],mass4[5],mass4[7],mass_friend,mass_lenta_challenge,mass_complete_challenge,mysor,new challenge(mass4[9],null,mass4[10]),mass_followed_mass,mass4[6]);
 		TEMP_USER_RES.rank=0;
+		console.log("mass4[2]=0");
 		break;
 		
-		case 1:
-		TEMP_USER_RES=new User_Admin(mass4[0],mass4[3],mass4[8],mass4[1],mass4[4],mass4[5],mass4[7],mass_friend,mass_lenta_challenge,mass_complete_challenge,null,new challenge(mass4[9],null,mass4[10]),mass_followed_mass,mass4[6]);
+		case "1":
+		TEMP_USER_RES=new User_Admin(mass4[0],mass4[3],mass4[8],mass4[1],mass4[4],mass4[5],mass4[7],mass_friend,mass_lenta_challenge,mass_complete_challenge,mysor,new challenge(mass4[9],null,mass4[10]),mass_followed_mass,mass4[6]);
 		TEMP_USER_RES.rank=1;
-		
+		console.log("mass4[2]=1");
 		break;
 		
-		case 2:
+		case "2":
 		TEMP_USER_RES=new User(mass4[0],mass4[3],mass4[8]);
 		//var txt=""+p.login+"@4@"+p.id+"@4@"+p.rank+"@4@"+p.mail+"@4@"+p.place_in_top+"@4@"+p.exp+"@4@"+p.photo+"@4@"+p.info+"@4@"+p.password+"@4@"+p.not_complete_challenge.opisanie+"@3@"+p.not_complete_challenge.photo+"@4@";
 	TEMP_USER_RES.id=mass4[1];
@@ -1166,30 +1210,30 @@ function p_4tenie_polzovatelya_bd(log1)
 	TEMP_USER_RES.not_complete_challenge=new challenge(mass4[9],null,mass4[10]) 
 	TEMP_USER_RES.friend=mass_friend;
 	TEMP_USER_RES.lenta_challenge=mass_lenta_challenge;
-	TEMP_USER_RES.complete_challenge=
-	TEMP_USER_RES.followed
-
+	TEMP_USER_RES.complete_challenge=mass_complete_challenge
+	TEMP_USER_RES.followed=mass_followed_mass;
+TEMP_USER_RES.not_complete_challenges_arr=mysor;
 	
 
-	
+	console.log("mass4[2]=2");
 		break;
 		
-		case 3:
+		case "3":
 		TEMP_USER_RES=new User_Admin(mass4[0],mass4[3],mass4[8],mass4[1],2,mass4[4],mass4[5],mass4[7],mass_friend,mass_lenta_challenge,mass_complete_challenge,null,new challenge(mass4[9],null,mass4[10]),mass_followed_mass,mass4[6]);
 		TEMP_USER_RES.rank=0;
-		
+		console.log("mass4[2]=3");
 		break;
 		
-		case 4:
+		case "4":
 		TEMP_USER_RES=new User_Admin(mass4[0],mass4[3],mass4[8],mass4[1],2,mass4[4],mass4[5],mass4[7],mass_friend,mass_lenta_challenge,mass_complete_challenge,null,new challenge(mass4[9],null,mass4[10]),mass_followed_mass,mass4[6]);
 		TEMP_USER_RES.rank=0;
-		
+		console.log("mass4[2]=4");
 		break;
 		
-		case 5:
+		case "5":
 		TEMP_USER_RES=new User_Admin(mass4[0],mass4[3],mass4[8],mass4[1],2,mass4[4],mass4[5],mass4[7],mass_friend,mass_lenta_challenge,mass_complete_challenge,null,new challenge(mass4[9],null,mass4[10]),mass_followed_mass,mass4[6]);
 		TEMP_USER_RES.rank=0;
-		
+		console.log("mass4[2]=5");
 		break;
 		
 	}
@@ -1202,20 +1246,18 @@ function p_4tenie_polzovatelya_bd(log1)
 
 	
 	
-	
+	console.log("GLAVN_LOG"+TEMP_USER_RES.login);
 	return TEMP_USER_RES;
-	}
-	catch(err){
-		console.log("error");
-	}
+	//}
+	//catch(err){
+		//console.log(err.message)
+		//console.log(err.name)
+		//console.log("error");
+	//}
 }
 
 
-function get_user_by_login(log1){
-	
-	//for(var i=0;i<)
-	
-}
+
 function p_4tenie_spiska_polzovatelei_zanos(a,b){
 	var text;
 	var res=null;
@@ -1228,7 +1270,9 @@ function p_4tenie_spiska_polzovatelei_zanos(a,b){
 		
 		case 1://чтение
 		text = fs.readFileSync('\public_html/bd/bd_us/bd_login.txt', 'utf8');
+		//console.log("___"+text);
 		res=text.split("@");
+		return res;
 		break;
 		
 		
@@ -1242,7 +1286,7 @@ function p_4tenie_spiska_polzovatelei_zanos(a,b){
 			res=text.split("@");
 			
 		}
-		
+		return res;
 		break;
 
 	//}
@@ -1277,41 +1321,41 @@ function sohran_polzovatelya_bd(log1)
 	
 
 	//"@5@"+
-	var txt=""+p.login+"@4@"+p.id+"@4@"+p.rank+"@4@"+p.mail+"@4@"+p.place_in_top+"@4@"+p.exp+"@4@"+p.photo+"@4@"+p.info+"@4@"+p.password+"@4@"+p.not_complete_challenge.opisanie+"@3@"+p.not_complete_challenge.photo+"@4@";
+	var txt=""+p.login+"@#4#@"+p.id+"@#4#@"+p.rank+"@#4#@"+p.mail+"@#4#@"+p.place_in_top+"@#4#@"+p.exp+"@#4#@"+p.photo+"@#4#@"+p.info+"@#4#@"+p.password+"@#4#@"+p.not_complete_challenge.opisanie+"@#4#@"+p.not_complete_challenge.photo+"@#4#@";
 	
 	for(var i=0;i<p.friend.length;++i)
 	{
-		txt+=p.friend[i].login+"@3@";
+		txt+=p.friend[i].login+"@#3#@";
 		
 		
 	}
-	txt+="@4@";
+	txt+="@#4#@";
 	for(var i=0;i<p.lenta_challenge.length;++i)
 	{
-		txt+=p.lenta_challenge[i].opisanie+"@3@";
-		for(var i2=0;i2<p.lenta_challenge[i].liked[i2];++i2)
+		txt+=p.lenta_challenge[i].opisanie+"@#3#@";
+		for(var i2=0;i2<p.lenta_challenge[i].liked.length;++i2)
 			
 			{
-				txt+=p.lenta_challenge[i].liked[i2].login+"@2@";
+				txt+=p.lenta_challenge[i].liked[i2].login+"@#2#@";
 				
 				
 			}
-			txt+="@3@"+p.lenta_challenge[i].photo;
+			txt+="@#3#@"+p.lenta_challenge[i].photo+"@#3#@";
 		
 		
 	}
-	txt+="@4@";
+	txt+="@#4#@";
 	for(var i=0;i<p.complete_challenge.length;++i)
 	{
-		txt+=p.complete_challenge[i].opisanie+"@3@";
-		for(var i2=0;i2<p.complete_challenge[i].liked[i2];++i2)
+		txt+=p.complete_challenge[i].opisanie+"@#3#@";
+		for(var i2=0;i2<p.complete_challenge[i].liked.length;++i2)
 			
 			{
-				txt+=p.lenta_challenge[i].liked[i2].login+"@2@";
+				txt+=p.complete_challenge[i].liked[i2].login+"@#2#@";
 				
 				
 			}
-			txt+="@3@"+p.complete_challenge[i].photo;
+			txt+="@#3#@"+p.complete_challenge[i].photo+"@#3#@";
 		
 	}
 	//txt+="@4@";
@@ -1322,14 +1366,14 @@ function sohran_polzovatelya_bd(log1)
 		
 	//}
 	
-	txt+="@4@";
+	txt+="@#4#@";
 	for(var i=0;i<p.followed.length;++i)
 	{
-		txt+=p.followed[i].login+"@3@";
+		txt+=p.followed[i].login+"@#3#@";
 		
 		
 	}
-	txt+="@4@";
+	txt+="@#4#@";
 	
 	
 	
@@ -1339,8 +1383,25 @@ function sohran_polzovatelya_bd(log1)
 }
 
 
-
-
+function UP_BD(){
+	var tt1_log=p_4tenie_spiska_polzovatelei_zanos(1,"");
+	//console.log(tt1_log[0]);
+	var res=[];
+	if(tt1_log)
+	{
+	for(var i=0;i<tt1_log.length;++i)
+	{
+		if(tt1_log[i]!="")
+		{
+			
+		
+		res.push(p_4tenie_polzovatelya_bd(tt1_log[i]));
+		//console.log("LOGINI"+p_4tenie_polzovatelya_bd(tt1_log[i]).login);
+		}
+	}
+	}
+	return res;
+}
 
 
 
@@ -1351,7 +1412,8 @@ function sohran_polzovatelya_bd(log1)
 
 function send_top()
 {
-	top_users=p_4tenie_spiska_polzovatelei_zanos(1,"");
+	//top_users=p_4tenie_spiska_polzovatelei_zanos(1,"");
+	top_users=common_users;
 	top_users.sort(function(a, b) {
   if(a.exp>b.exp) return 1;
   else return -1;
