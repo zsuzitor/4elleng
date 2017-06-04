@@ -911,23 +911,27 @@ console.log(req.url);
 			 //{
 				 //console.log(arr[i1]+"__");
 			 //}
-			 
+			 var ht=true;
 			 for(var i=0;i<common_users.length;++i)
 			 {
-				 if(common_users[i].login==arr[0]&&common_users[i].mail==arr[1]){
+				 if(common_users[i].login==arr[0]||common_users[i].mail==arr[1]){
 					 console.log("fa1lse");
 					 global_flag_zahoda=false;
 					 res.end("fa1lse");
+					 ht=false;
 				 }
 			 }
 			 
+			 if(ht)
+			 {
+				 
 			 
 			 accept_new_user(arr[0],arr[1],arr[2]);//log mail pass
 			 console.log("tr1ue!"+common_users[common_users.length-1].id);
 			 global_index=common_users.length-1;
 			 global_flag_zahoda=false;
 			 res.end("tr1ue!"+common_users[common_users.length-1].id);
-			 
+			 }
 		 }
 		 
 		 if(global_index!=-1&&global_flag_zahoda)

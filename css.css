@@ -1,6 +1,7 @@
 @charset "utf-8";
 /* CSS Document */
 @import url('https://fonts.googleapis.com/css?family=Kurale');
+@import url('https://fonts.googleapis.com/css?family=El+Messiri');
 
 
 body 
@@ -45,11 +46,9 @@ a
   
 }
 
-
-
 #content
 {
-  background: #F0F8FF;;
+  background: #F0F8FF;
   margin: 0 120px; 
   padding: 10px;
   height: 600px;
@@ -112,14 +111,14 @@ h2
 
 .block_content 
 {
-  border: 1px solid red; 
+  border: 1px solid #b074ae; 
   padding: 5px; /* Расстояние от текста до рамки */
   transition: 3s;
 }
 
 .block_content:hover 
 {
-  background-color: #FFC0CB;
+  background-color: #e7d3f5;
   color: #000;
 }
 
@@ -141,13 +140,13 @@ h2
   border: 3px;
 }
 
-#gg2, #gg1, #gg3, #gg4, #gg5, #addfriend{
+#gg2, #gg1, #gg3, #gg4, #gg5, #addfriend {
   display: inline-block;
-  height: 35;
+  height: 40;
   width: 100;
   background-color: #D8BFD8;
   font-weight: 700;
-  margin-top: 20px;
+  margin-top: 35px;
   font-family: 'Marck Script', cursive;
   text-decoration: none;
   user-select: none;
@@ -157,6 +156,17 @@ h2
   transition: 0.2s;
   border: 3px;
 } 
+
+#gg4
+{
+  margin-bottom: 35px;
+}
+
+#addfriend 
+{
+  margin-top: none;
+  margin-left: 5px;
+}
 
 #gg_profil_sverhu_knopka:hover { background: #B0C4DE; }
 #gg_profil_sverhu_knopka:active { background: white; }
@@ -217,7 +227,7 @@ p
 
 #addch1:hover 
 {
-  background: #FFC0CB;
+  background: #D8BFD8;
   box-shadow: 0 15px 20px rgba(122,122,122,0.5);
   color: black;
   transform: translateY(-7px);
@@ -229,7 +239,7 @@ p
   outline: none;
   display: inline-block;
   width: 170px;
-  margin-left: 225px;
+  margin-left: 0px;
   height: 50px;
   line-height: 45px;
   border-radius: 15px;
@@ -247,24 +257,15 @@ p
 
 #red_pr_1:hover 
 {
-  background: #FFC0CB;
+  background: #D8BFD8;
   box-shadow: 0 15px 20px rgba(122,122,122,0.5);
   color: black;
   transform: translateY(-7px);
 }
 
-#DR {
-width: 110px; 
-float: right;
+#str 
+{
 list-style-type: none;
-	
-
-}
-#str {
-
-list-style-type: none;
-	
-
 }
 
 .layer1 {
@@ -286,14 +287,14 @@ list-style-type: none;
    
    
    
-   #not_ex{
+  #not_ex{
   text-decoration: none;
   outline: none;
   display: inline-block;
   padding: 12px 40px;
   margin: 10px 20px;
   border-radius: 15px;
-  background-image: radial-gradient(white, #FFB6C1);
+  background-image: radial-gradient(white, #D8BFD8);
   background-position: 100% 0;
   background-size: 200% 200%;
   font-family: 'Lobster', cursive;
@@ -322,7 +323,7 @@ list-style-type: none;
   font-family: 'Lobster', cursive;
   border: 1px solid;
   margin-left: 550px;
-  background-color: #FFC0CB;
+  background-color: #D8BFD8;
   text-transform: uppercase;
   overflow: hidden;
   letter-spacing: 2px;
@@ -342,7 +343,7 @@ list-style-type: none;
 }
 #go_ex:hover {
   background: rgba(255,255,255,0);
-  color:#FFE4E1;
+  color:#F0F8FF;
 }
 #go_ex:hover:before {
   bottom: 0%;
@@ -369,7 +370,7 @@ list-style-type: none;
   letter-spacing: 3px;
   font-weight: 600;
   color: #524f4e;
-  background: #FFC0CB;
+  background: #D8BFD8;
   box-shadow: 0 8px 15px rgba(0,0,0,.1);
   transition: .3s;
 }
@@ -384,30 +385,46 @@ list-style-type: none;
 
 #trmp_knopkaadd {
     font-size: 12px;
-    text-decoration: none;
     cursor: pointer;
     display:block;
-        width:90px;
     font-weight: bold;
-    margin:20px auto;
-        text-align:center;
+    margin-left: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-align:center;
     padding: 1px 5px;
-    color: #717171;
-    -webkit-border-radius: 4px;
-    -moz-border-radius: 4px;
-    border-radius: 4px;
-    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.3);
-    -webkit-box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.2), inset 0 0 6px 0 rgba(255, 255, 255, 0.3), 0 1px 2px rgba(0, 0, 0, 0.4);
-    -moz-box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.2), inset 0 0 6px 0 rgba(255, 255, 255, 0.3), 0 1px 2px rgba(0, 0, 0, 0.4);
-    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.2), inset 0 0 6px 0 rgba(255, 255, 255, 0.3), 0 1px 2px rgba(0, 0, 0, 0.4);
-    background: #f6f6f6;
-    background: -webkit-gradient(linear, left top, left bottom, from(#f6f6f6), to(#d4d4d4));
-    background: -webkit-linear-gradient(#f6f6f6, #d4d4d4);
-    background-image: -moz-linear-gradient(top, #f6f6f6, #d4d4d4);
-    background-image: -moz-gradient(top, #f6f6f6, #d4d4d4);
-    border: 1px solid #a1a1a1;
-    height:70px; 
+    background-color: #D8BFD8;
+    border-radius: 5px;
+    height:30px; 
     width:70px;
+    font-color: black;
+}
+
+#temp_add_fr
+{
+  border: 3px;
+  border-radius: 5px;
+  color: black;
+  margin-bottom: 1px;
+  margin-top: 1px;
+
+}
+
+#temp_id_add_fr
+{
+  margin-bottom: 50px;
+}
+
+.parent
+{
+  margin-top: 5px;
+}
+
+#DR 
+{
+  width: 110px;   
+  float: right;
+  list-style-type: none;  
 }
 
 #trmp_knopkaadd:hover {
@@ -522,8 +539,11 @@ list-style-type: none;
   transform: translateY(-7px);
 }
 
-
-
-
-
-
+#id_for_image_exit_gaba{
+  margin-left: 580px;
+}
+#id_for_header_exit_gaba{
+  margin-left: 666px;
+  font-size: 30px;
+  font-family: 'El Messiri', sans-serif;
+}
